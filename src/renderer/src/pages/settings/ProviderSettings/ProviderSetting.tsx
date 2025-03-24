@@ -1,7 +1,5 @@
 import {
   CheckOutlined,
-  // EditOutlined,
-  ExportOutlined,
   LoadingOutlined
   // MinusCircleOutlined,
   // PlusOutlined,
@@ -29,17 +27,14 @@ import {
   Button,
   // Card,
   Divider,
-  Flex,
   Input,
   Space,
   Switch
   // Tooltip
 } from 'antd'
-import Link from 'antd/es/typography/Link'
 import { isEmpty } from 'lodash'
 import { FC, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import styled from 'styled-components'
 
 import {
   SettingContainer,
@@ -90,7 +85,7 @@ const ProviderSetting: FC<Props> = ({ provider: _provider }) => {
   // const isAzureOpenAI = provider.id === 'azure-openai' || provider.type === 'azure-openai'
 
   const providerConfig = PROVIDER_CONFIG[provider.id]
-  const officialWebsite = providerConfig?.websites?.official
+  // const officialWebsite = providerConfig?.websites?.official
   const apiKeyWebsite = providerConfig?.websites?.apiKey
   // const docsWebsite = providerConfig?.websites?.docs
   // const modelsWebsite = providerConfig?.websites?.models
@@ -235,14 +230,14 @@ const ProviderSetting: FC<Props> = ({ provider: _provider }) => {
   return (
     <SettingContainer theme={theme}>
       <SettingTitle>
-        <Flex align="center" gap={8}>
+        {/* <Flex align="center" gap={8}>
           <ProviderName>{provider.isSystem ? t(`provider.${provider.id}`) : provider.name}</ProviderName>
           {officialWebsite! && (
             <Link target="_blank" href={providerConfig.websites.official}>
               <ExportOutlined style={{ color: 'var(--color-text)', fontSize: '12px' }} />
             </Link>
           )}
-        </Flex>
+        </Flex> */}
         <Switch
           value={provider.enabled}
           key={provider.id}
@@ -441,9 +436,9 @@ const ProviderSetting: FC<Props> = ({ provider: _provider }) => {
 //   }
 // `
 
-const ProviderName = styled.span`
-  font-size: 14px;
-  font-weight: 500;
-`
+// const ProviderName = styled.span`
+//   font-size: 14px;
+//   font-weight: 500;
+// `
 
 export default ProviderSetting

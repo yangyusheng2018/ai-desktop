@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { DEFAULT_CONTEXTCOUNT, DEFAULT_TEMPERATURE } from '@renderer/config/constant'
 import { TopicManager } from '@renderer/hooks/useTopic'
-import { getDefaultAssistant, getDefaultTopic } from '@renderer/services/AssistantService'
+import { getDefaultAssistant, getDefaultTopic, getManyDefaultAssistant } from '@renderer/services/AssistantService'
 import { Assistant, AssistantSettings, Model, Topic } from '@renderer/types'
 import { uniqBy } from 'lodash'
 
@@ -9,12 +9,10 @@ export interface AssistantsState {
   defaultAssistant: Assistant
   assistants: Assistant[]
 }
-
 const initialState: AssistantsState = {
   defaultAssistant: getDefaultAssistant(),
-  assistants: [getDefaultAssistant()]
+  assistants: getManyDefaultAssistant()
 }
-
 const assistantsSlice = createSlice({
   name: 'assistants',
   initialState,

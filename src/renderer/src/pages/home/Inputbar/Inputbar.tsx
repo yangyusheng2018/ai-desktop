@@ -45,7 +45,6 @@ import NarrowLayout from '../Messages/NarrowLayout'
 import AttachmentButton from './AttachmentButton'
 import AttachmentPreview from './AttachmentPreview'
 import KnowledgeBaseButton from './KnowledgeBaseButton'
-import MentionModelsButton from './MentionModelsButton'
 import MentionModelsInput from './MentionModelsInput'
 import SendMessageButton from './SendMessageButton'
 import TokenCount from './TokenCount'
@@ -102,7 +101,7 @@ const Inputbar: FC<Props> = ({ assistant: _assistant, setActiveTopic }) => {
 
   const [tokenCount, setTokenCount] = useState(0)
 
-  const [mentionFromKeyboard, setMentionFromKeyboard] = useState(false)
+  const [, setMentionFromKeyboard] = useState(false)
 
   const debouncedEstimate = useCallback(
     debounce((newText) => {
@@ -560,28 +559,28 @@ const Inputbar: FC<Props> = ({ assistant: _assistant, setActiveTopic }) => {
     setSelectedKnowledgeBases(bases ?? [])
   }
 
-  const onMentionModel = (model: Model, fromKeyboard: boolean = false) => {
-    const textArea = textareaRef.current?.resizableTextArea?.textArea
-    if (textArea) {
-      if (fromKeyboard) {
-        const cursorPosition = textArea.selectionStart
-        const textBeforeCursor = text.substring(0, cursorPosition)
-        const lastAtIndex = textBeforeCursor.lastIndexOf('@')
+  // const onMentionModel = (model: Model, fromKeyboard: boolean = false) => {
+  //   const textArea = textareaRef.current?.resizableTextArea?.textArea
+  //   if (textArea) {
+  //     if (fromKeyboard) {
+  //       const cursorPosition = textArea.selectionStart
+  //       const textBeforeCursor = text.substring(0, cursorPosition)
+  //       const lastAtIndex = textBeforeCursor.lastIndexOf('@')
 
-        if (lastAtIndex !== -1) {
-          const newText = text.substring(0, lastAtIndex) + text.substring(cursorPosition)
-          setText(newText)
-        }
-      }
+  //       if (lastAtIndex !== -1) {
+  //         const newText = text.substring(0, lastAtIndex) + text.substring(cursorPosition)
+  //         setText(newText)
+  //       }
+  //     }
 
-      setMentionModels((prev) => [...prev, model])
-      setIsMentionPopupOpen(false)
-      setTimeout(() => {
-        textareaRef.current?.focus()
-      }, 0)
-      setMentionFromKeyboard(false)
-    }
-  }
+  //     setMentionModels((prev) => [...prev, model])
+  //     setIsMentionPopupOpen(false)
+  //     setTimeout(() => {
+  //       textareaRef.current?.focus()
+  //     }, 0)
+  //     setMentionFromKeyboard(false)
+  //   }
+  // }
 
   const handleRemoveModel = (model: Model) => {
     setMentionModels(mentionModels.filter((m) => m.id !== model.id))
@@ -677,11 +676,11 @@ const Inputbar: FC<Props> = ({ assistant: _assistant, setActiveTopic }) => {
                   <FormOutlined />
                 </ToolbarButton>
               </Tooltip>
-              <MentionModelsButton
+              {/* <MentionModelsButton
                 mentionModels={mentionModels}
                 onMentionModel={(model) => onMentionModel(model, mentionFromKeyboard)}
                 ToolbarButton={ToolbarButton}
-              />
+              /> */}
               <Tooltip placement="top" title={t('chat.input.web_search')} arrow>
                 <ToolbarButton type="text" onClick={onEnableWebSearch}>
                   <GlobalOutlined
