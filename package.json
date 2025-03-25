@@ -4,7 +4,7 @@
   "private": true,
   "description": "A powerful AI assistant for producer.",
   "main": "./out/main/index.js",
-  "author": "kangfenmao@qq.com",
+  "author": "yangyusheng",
   "homepage": "https://github.com/kangfenmao/cherry-studio",
   "workspaces": {
     "packages": [

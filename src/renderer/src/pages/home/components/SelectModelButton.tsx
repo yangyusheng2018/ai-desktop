@@ -3,7 +3,7 @@ import ModelTags from '@renderer/components/ModelTags'
 import SelectModelPopup from '@renderer/components/Popups/SelectModelPopup'
 import { isLocalAi } from '@renderer/config/env'
 import { useAssistant } from '@renderer/hooks/useAssistant'
-import { getProviderName } from '@renderer/services/ProviderService'
+// import { getProviderName } from '@renderer/services/ProviderService'
 import { Assistant } from '@renderer/types'
 import { Button } from 'antd'
 import { FC } from 'react'
@@ -30,7 +30,7 @@ const SelectModelButton: FC<Props> = ({ assistant }) => {
     }
   }
 
-  const providerName = getProviderName(model?.provider)
+  // const providerName = getProviderName(model?.provider)
 
   return (
     <DropdownButton size="small" type="default" onClick={onSelectModel}>
