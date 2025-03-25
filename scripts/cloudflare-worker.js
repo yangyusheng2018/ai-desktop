@@ -1,7 +1,7 @@
 // 配置信息
 const config = {
-  R2_CUSTOM_DOMAIN: 'cherrystudio.ocool.online',
-  R2_BUCKET_NAME: 'cherrystudio',
+  R2_CUSTOM_DOMAIN: 'WorkStudio.ocool.online',
+  R2_BUCKET_NAME: 'WorkStudio',
   // 缓存键名
   CACHE_KEY: 'cherry-studio-latest-release',
   VERSION_DB: 'versions.json',

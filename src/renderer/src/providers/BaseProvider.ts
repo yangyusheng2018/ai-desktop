@@ -72,7 +72,7 @@ export default abstract class BaseProvider {
   public defaultHeaders() {
     return {
       'HTTP-Referer': 'https://cherry-ai.com',
-      'X-Title': 'Cherry Studio',
+      'X-Title': 'Work Studio',
       'X-Api-Key': this.apiKey
     }
   }

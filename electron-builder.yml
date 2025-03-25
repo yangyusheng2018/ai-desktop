@@ -1,4 +1,4 @@
-appId: com.kangfenmao.CherryStudio
+appId: com.kangfenmao.WorkStudio
 productName: Cherry Studio
 directories:
   buildResources: build
@@ -73,7 +73,7 @@ linux:
   category: Utility
 publish:
   provider: generic
-  url: https://cherrystudio.ocool.online
+  url: https://WorkStudio.ocool.online
 electronDownload:
   mirror: https://npmmirror.com/mirrors/electron/
 afterPack: scripts/after-pack.js

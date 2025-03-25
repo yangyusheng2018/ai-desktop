@@ -88,7 +88,7 @@ export class WindowService {
       width,
       height,
       autoHideMenuBar: true,
-      title: 'Cherry Studio',
+      title: 'Work Studio',
       ...windowOptions,
       parent,
       webPreferences: {
