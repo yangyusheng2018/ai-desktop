@@ -78,8 +78,8 @@ const ProviderSetting: FC<Props> = ({ provider: _provider }) => {
   const providerConfig = PROVIDER_CONFIG[provider.id]
   const officialWebsite = providerConfig?.websites?.official
   const apiKeyWebsite = providerConfig?.websites?.apiKey
-  const docsWebsite = providerConfig?.websites?.docs
-  const modelsWebsite = providerConfig?.websites?.models
+  // const docsWebsite = providerConfig?.websites?.docs
+  // const modelsWebsite = providerConfig?.websites?.models
   const configedApiHost = providerConfig?.api?.url
 
   const [editingModel, setEditingModel] = useState<Model | null>(null)

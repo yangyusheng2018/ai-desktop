@@ -13,7 +13,6 @@ import { isMac } from '@renderer/config/constant'
 import { TEXT_TO_IMAGES_MODELS } from '@renderer/config/models'
 import { useTheme } from '@renderer/context/ThemeProvider'
 import { usePaintings } from '@renderer/hooks/usePaintings'
-import { useAllProviders } from '@renderer/hooks/useProvider'
 import { useRuntime } from '@renderer/hooks/useRuntime'
 import { useSettings } from '@renderer/hooks/useSettings'
 import AiProvider from '@renderer/providers/AiProvider'
@@ -76,8 +75,8 @@ const PaintingsPage: FC = () => {
   const { paintings, addPainting, removePainting, updatePainting } = usePaintings()
   const [painting, setPainting] = useState<Painting>(_painting || paintings[0])
   const { theme } = useTheme()
-  const providers = useAllProviders()
-  const siliconProvider = providers.find((p) => p.id === 'silicon')!
+  // const providers = useAllProviders()
+  // const siliconProvider = providers.find((p) => p.id === 'silicon')!
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   const [isLoading, setIsLoading] = useState(false)

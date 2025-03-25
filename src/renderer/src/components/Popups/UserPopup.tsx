@@ -1,13 +1,10 @@
-import DefaultAvatar from '@renderer/assets/images/avatar.png'
 import useAvatar from '@renderer/hooks/useAvatar'
-import { useSettings } from '@renderer/hooks/useSettings'
 import ImageStorage from '@renderer/services/ImageStorage'
 import { useAppDispatch } from '@renderer/store'
 import { setAvatar } from '@renderer/store/runtime'
-import { compressImage, isEmoji } from '@renderer/utils'
-import { Avatar, Modal, Popover, Upload } from 'antd'
+import { isEmoji } from '@renderer/utils'
+import { Avatar, Modal, Popover } from 'antd'
 import { useState } from 'react'
-import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 
 import EmojiPicker from '../EmojiPicker'
@@ -21,9 +18,9 @@ interface Props {
 const PopupContainer: React.FC<Props> = ({ resolve }) => {
   const [open, setOpen] = useState(true)
   const [emojiPickerOpen, setEmojiPickerOpen] = useState(false)
-  const [dropdownOpen, setDropdownOpen] = useState(false)
-  const { t } = useTranslation()
-  const { userName } = useSettings()
+  const [, setDropdownOpen] = useState(false)
+  // const { t } = useTranslation()
+  // const { userName } = useSettings()
   const dispatch = useAppDispatch()
   const avatar = useAvatar()
 
@@ -50,73 +47,73 @@ const PopupContainer: React.FC<Props> = ({ resolve }) => {
       window.message.error(error.message)
     }
   }
-  const handleReset = async () => {
-    try {
-      await ImageStorage.set('avatar', DefaultAvatar)
-      dispatch(setAvatar(DefaultAvatar))
-      setDropdownOpen(false)
-    } catch (error: any) {
-      window.message.error(error.message)
-    }
-  }
-  const items = [
-    {
-      key: 'upload',
-      label: (
-        <div style={{ width: '100%', textAlign: 'center' }}>
-          <Upload
-            customRequest={() => {}}
-            accept="image/png, image/jpeg, image/gif"
-            itemRender={() => null}
-            maxCount={1}
-            onChange={async ({ file }) => {
-              try {
-                const _file = file.originFileObj as File
-                if (_file.type === 'image/gif') {
-                  await ImageStorage.set('avatar', _file)
-                } else {
-                  const compressedFile = await compressImage(_file)
-                  await ImageStorage.set('avatar', compressedFile)
-                }
-                dispatch(setAvatar(await ImageStorage.get('avatar')))
-                setDropdownOpen(false)
-              } catch (error: any) {
-                window.message.error(error.message)
-              }
-            }}>
-            {t('settings.general.image_upload')}
-          </Upload>
-        </div>
-      )
-    },
-    {
-      key: 'emoji',
-      label: (
-        <div
-          style={{ width: '100%', textAlign: 'center' }}
-          onClick={(e) => {
-            e.stopPropagation()
-            setEmojiPickerOpen(true)
-            setDropdownOpen(false)
-          }}>
-          {t('settings.general.emoji_picker')}
-        </div>
-      )
-    },
-    {
-      key: 'reset',
-      label: (
-        <div
-          style={{ width: '100%', textAlign: 'center' }}
-          onClick={(e) => {
-            e.stopPropagation()
-            handleReset()
-          }}>
-          {t('settings.general.avatar.reset')}
-        </div>
-      )
-    }
-  ]
+  // const handleReset = async () => {
+  //   try {
+  //     await ImageStorage.set('avatar', DefaultAvatar)
+  //     dispatch(setAvatar(DefaultAvatar))
+  //     setDropdownOpen(false)
+  //   } catch (error: any) {
+  //     window.message.error(error.message)
+  //   }
+  // }
+  // const items = [
+  //   {
+  //     key: 'upload',
+  //     label: (
+  //       <div style={{ width: '100%', textAlign: 'center' }}>
+  //         <Upload
+  //           customRequest={() => {}}
+  //           accept="image/png, image/jpeg, image/gif"
+  //           itemRender={() => null}
+  //           maxCount={1}
+  //           onChange={async ({ file }) => {
+  //             try {
+  //               const _file = file.originFileObj as File
+  //               if (_file.type === 'image/gif') {
+  //                 await ImageStorage.set('avatar', _file)
+  //               } else {
+  //                 const compressedFile = await compressImage(_file)
+  //                 await ImageStorage.set('avatar', compressedFile)
+  //               }
+  //               dispatch(setAvatar(await ImageStorage.get('avatar')))
+  //               setDropdownOpen(false)
+  //             } catch (error: any) {
+  //               window.message.error(error.message)
+  //             }
+  //           }}>
+  //           {t('settings.general.image_upload')}
+  //         </Upload>
+  //       </div>
+  //     )
+  //   },
+  //   {
+  //     key: 'emoji',
+  //     label: (
+  //       <div
+  //         style={{ width: '100%', textAlign: 'center' }}
+  //         onClick={(e) => {
+  //           e.stopPropagation()
+  //           setEmojiPickerOpen(true)
+  //           setDropdownOpen(false)
+  //         }}>
+  //         {t('settings.general.emoji_picker')}
+  //       </div>
+  //     )
+  //   },
+  //   {
+  //     key: 'reset',
+  //     label: (
+  //       <div
+  //         style={{ width: '100%', textAlign: 'center' }}
+  //         onClick={(e) => {
+  //           e.stopPropagation()
+  //           handleReset()
+  //         }}>
+  //         {t('settings.general.avatar.reset')}
+  //       </div>
+  //     )
+  //   }
+  // ]
 
   return (
     <Modal

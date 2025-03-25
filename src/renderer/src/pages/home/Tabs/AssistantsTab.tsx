@@ -6,7 +6,6 @@ import { useAssistants } from '@renderer/hooks/useAssistant'
 import { Assistant } from '@renderer/types'
 import { FC, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
 import AssistantItem from './AssistantItem'
@@ -37,7 +36,7 @@ const Assistants: FC<AssistantsTabProps> = ({
     },
     [assistants, removeAssistant, setActiveAssistant, onCreateDefaultAssistant]
   )
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   return (
     <Container className="assistants-tab">
       <DragableList
