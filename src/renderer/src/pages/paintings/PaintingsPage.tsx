@@ -67,7 +67,6 @@ const IMAGE_SIZES = [
     icon: ImageSize9_16
   }
 ]
-
 let _painting: Painting
 
 const PaintingsPage: FC = () => {
