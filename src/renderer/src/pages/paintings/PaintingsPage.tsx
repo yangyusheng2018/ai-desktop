@@ -154,6 +154,9 @@ const PaintingsPage: FC = () => {
     }
 
     try {
+      const imgArr = (painting.imageSize || '1024x1024').split('x')
+      const width = parseInt(imgArr[0])
+      const height = parseInt(imgArr[1])
       const urls = await AI.generateImage({
         model: painting.model,
         prompt,
@@ -164,7 +167,9 @@ const PaintingsPage: FC = () => {
         numInferenceSteps: painting.steps || 25,
         guidanceScale: painting.guidanceScale || 4.5,
         signal: controller.signal,
-        promptEnhancement: painting.promptEnhancement || false
+        promptEnhancement: painting.promptEnhancement || false,
+        width,
+        height
       })
 
       if (urls.length > 0) {
@@ -307,12 +312,12 @@ const PaintingsPage: FC = () => {
       </Navbar>
       <ContentContainer id="content-container">
         <LeftContainer>
-          <SettingTitle style={{ marginBottom: 5 }}>{t('common.provider')}</SettingTitle>
+          {/* <SettingTitle style={{ marginBottom: 5 }}>{t('common.provider')}</SettingTitle>
           <Select
             value={siliconProvider.id}
             disabled={true}
             options={[{ label: t(`provider.${siliconProvider.id}`), value: siliconProvider.id }]}
-          />
+          /> */}
           <SettingTitle style={{ marginBottom: 5, marginTop: 15 }}>{t('common.model')}</SettingTitle>
           <Select value={painting.model} options={modelOptions} onChange={onSelectModel} />
           <SettingTitle style={{ marginBottom: 5, marginTop: 15 }}>{t('paintings.image.size')}</SettingTitle>

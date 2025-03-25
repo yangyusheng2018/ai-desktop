@@ -646,9 +646,16 @@ export default class OpenAIProvider extends BaseProvider {
   }
 
   public async models(): Promise<OpenAI.Models.Model[]> {
+    console.log('models')
     try {
-      const response = await this.sdk.models.list()
-
+      console.log(this.sdk.models, 'this.sdk.models')
+      // http://xa1.puhuacloud.com:23311/app-api/ai/openai/v1/chat/completions
+      // /openai/v1/chat/completions
+      const response = await this.sdk.models.list({
+        method: 'post',
+        path: 'http://xa1.puhuacloud.com:23311/app-api/ai/v1/chat/completions'
+      })
+      console.log('response')
       if (this.provider.id === 'github') {
         // @ts-ignore key is not typed
         return response.body
@@ -674,7 +681,7 @@ export default class OpenAIProvider extends BaseProvider {
       }
 
       const models = response?.data || []
-
+      console.log('modelsresponse')
       return models.filter(isSupportedModel)
     } catch (error) {
       return []
@@ -691,7 +698,9 @@ export default class OpenAIProvider extends BaseProvider {
     numInferenceSteps,
     guidanceScale,
     signal,
-    promptEnhancement
+    promptEnhancement,
+    height,
+    width
   }: GenerateImageParams): Promise<string[]> {
     const response = (await this.sdk.request({
       method: 'post',
@@ -706,7 +715,9 @@ export default class OpenAIProvider extends BaseProvider {
         seed: seed ? parseInt(seed) : undefined,
         num_inference_steps: numInferenceSteps,
         guidance_scale: guidanceScale,
-        prompt_enhancement: promptEnhancement
+        prompt_enhancement: promptEnhancement,
+        height,
+        width
       }
     })) as { data: Array<{ url: string }> }
 

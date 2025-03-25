@@ -1,16 +1,14 @@
 import {
   CheckOutlined,
-  EditOutlined,
-  ExportOutlined,
-  LoadingOutlined,
-  MinusCircleOutlined,
-  PlusOutlined,
-  SettingOutlined
+  LoadingOutlined
+  // MinusCircleOutlined,
+  // PlusOutlined,
+  // SettingOutlined
 } from '@ant-design/icons'
 import { HStack } from '@renderer/components/Layout'
-import ModelTags from '@renderer/components/ModelTags'
+// import ModelTags from '@renderer/components/ModelTags'
 import OAuthButton from '@renderer/components/OAuth/OAuthButton'
-import { getModelLogo } from '@renderer/config/models'
+// import { getModelLogo } from '@renderer/config/models'
 import { PROVIDER_CONFIG } from '@renderer/config/providers'
 import { useTheme } from '@renderer/context/ThemeProvider'
 import { useAssistants, useDefaultModel } from '@renderer/hooks/useAssistant'
@@ -24,12 +22,19 @@ import { setModel } from '@renderer/store/assistants'
 import { Model, Provider } from '@renderer/types'
 import { formatApiHost } from '@renderer/utils/api'
 import { providerCharge } from '@renderer/utils/oauth'
-import { Avatar, Button, Card, Divider, Flex, Input, Space, Switch } from 'antd'
-import Link from 'antd/es/typography/Link'
-import { groupBy, isEmpty, sortBy, toPairs } from 'lodash'
+import {
+  // Avatar,
+  Button,
+  // Card,
+  Divider,
+  Input,
+  Space,
+  Switch
+  // Tooltip
+} from 'antd'
+import { isEmpty } from 'lodash'
 import { FC, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import styled from 'styled-components'
 
 import {
   SettingContainer,
@@ -39,13 +44,13 @@ import {
   SettingSubtitle,
   SettingTitle
 } from '..'
-import AddModelPopup from './AddModelPopup'
+// import AddModelPopup from './AddModelPopup'
 import ApiCheckPopup from './ApiCheckPopup'
-import EditModelsPopup from './EditModelsPopup'
-import GraphRAGSettings from './GraphRAGSettings'
-import LMStudioSettings from './LMStudioSettings'
+// import EditModelsPopup from './EditModelsPopup'
+// import GraphRAGSettings from './GraphRAGSettings'
+// import LMStudioSettings from './LMStudioSettings'
 import ModelEditContent from './ModelEditContent'
-import OllamSettings from './OllamaSettings'
+// import OllamSettings from './OllamaSettings'
 import SelectProviderModelPopup from './SelectProviderModelPopup'
 
 interface Props {
@@ -56,10 +61,14 @@ const ProviderSetting: FC<Props> = ({ provider: _provider }) => {
   const { provider } = useProvider(_provider.id)
   const [apiKey, setApiKey] = useState(provider.apiKey)
   const [apiHost, setApiHost] = useState(provider.apiHost)
-  const [apiVersion, setApiVersion] = useState(provider.apiVersion)
+  // const [apiVersion, setApiVersion] = useState(provider.apiVersion)
   const [apiValid, setApiValid] = useState(false)
   const [apiChecking, setApiChecking] = useState(false)
-  const { updateProvider, models, removeModel } = useProvider(provider.id)
+  const {
+    updateProvider,
+    models
+    // removeModel
+  } = useProvider(provider.id)
   const { assistants } = useAssistants()
   const { t } = useTranslation()
   const { theme } = useTheme()
@@ -67,19 +76,19 @@ const ProviderSetting: FC<Props> = ({ provider: _provider }) => {
 
   const { defaultModel, setDefaultModel } = useDefaultModel()
 
-  const modelGroups = groupBy(models, 'group')
-  const sortedModelGroups = sortBy(toPairs(modelGroups), [0]).reduce((acc, [key, value]) => {
-    acc[key] = value
-    return acc
-  }, {})
+  // const modelGroups = groupBy(models, 'group')
+  // const sortedModelGroups = sortBy(toPairs(modelGroups), [0]).reduce((acc, [key, value]) => {
+  //   acc[key] = value
+  //   return acc
+  // }, {})
 
-  const isAzureOpenAI = provider.id === 'azure-openai' || provider.type === 'azure-openai'
+  // const isAzureOpenAI = provider.id === 'azure-openai' || provider.type === 'azure-openai'
 
   const providerConfig = PROVIDER_CONFIG[provider.id]
-  const officialWebsite = providerConfig?.websites?.official
+  // const officialWebsite = providerConfig?.websites?.official
   const apiKeyWebsite = providerConfig?.websites?.apiKey
-  const docsWebsite = providerConfig?.websites?.docs
-  const modelsWebsite = providerConfig?.websites?.models
+  // const docsWebsite = providerConfig?.websites?.docs
+  // const modelsWebsite = providerConfig?.websites?.models
   const configedApiHost = providerConfig?.api?.url
 
   const [editingModel, setEditingModel] = useState<Model | null>(null)
@@ -98,9 +107,9 @@ const ProviderSetting: FC<Props> = ({ provider: _provider }) => {
     }
   }
 
-  const onUpdateApiVersion = () => updateProvider({ ...provider, apiVersion })
-  const onManageModel = () => EditModelsPopup.show({ provider })
-  const onAddModel = () => AddModelPopup.show({ title: t('settings.models.add.add_model'), provider })
+  // const onUpdateApiVersion = () => updateProvider({ ...provider, apiVersion })
+  // const onManageModel = () => EditModelsPopup.show({ provider })
+  // const onAddModel = () => AddModelPopup.show({ title: t('settings.models.add.add_model'), provider })
 
   const onCheckApi = async () => {
     if (isEmpty(models)) {
@@ -221,17 +230,14 @@ const ProviderSetting: FC<Props> = ({ provider: _provider }) => {
   return (
     <SettingContainer theme={theme}>
       <SettingTitle>
-        <Flex align="center" gap={8}>
-          <ProviderName>
-            {/* {provider.isSystem ? t(`provider.${provider.id}`) : provider.name} */}
-            普华大模型
-          </ProviderName>
+        {/* <Flex align="center" gap={8}>
+          <ProviderName>{provider.isSystem ? t(`provider.${provider.id}`) : provider.name}</ProviderName>
           {officialWebsite! && (
             <Link target="_blank" href={providerConfig.websites.official}>
               <ExportOutlined style={{ color: 'var(--color-text)', fontSize: '12px' }} />
             </Link>
           )}
-        </Flex>
+        </Flex> */}
         <Switch
           value={provider.enabled}
           key={provider.id}
@@ -294,7 +300,7 @@ const ProviderSetting: FC<Props> = ({ provider: _provider }) => {
           <SettingHelpText>{t('settings.provider.api.url.tip')}</SettingHelpText>
         </SettingHelpTextRow>
       )}
-      {isAzureOpenAI && (
+      {/* {isAzureOpenAI && (
         <>
           <SettingSubtitle>{t('settings.provider.api_version')}</SettingSubtitle>
           <Space.Compact style={{ width: '100%', marginTop: 5 }}>
@@ -318,6 +324,17 @@ const ProviderSetting: FC<Props> = ({ provider: _provider }) => {
           key={group}
           type="inner"
           title={group}
+          extra={
+            <Tooltip title={t('settings.models.manage.remove_whole_group')}>
+              <HoveredRemoveIcon
+                onClick={() =>
+                  modelGroups[group]
+                    .filter((model) => provider.models.some((m) => m.id === model.id))
+                    .forEach((model) => removeModel(model))
+                }
+              />
+            </Tooltip>
+          }
           style={{ marginBottom: '10px', border: '0.5px solid var(--color-border)' }}
           size="small">
           {sortedModelGroups[group].map((model) => (
@@ -337,7 +354,7 @@ const ProviderSetting: FC<Props> = ({ provider: _provider }) => {
           ))}
         </Card>
       ))}
-      {/* {docsWebsite && (
+      {docsWebsite && (
         <SettingHelpTextRow>
           <SettingHelpText>{t('settings.provider.docs_check')} </SettingHelpText>
           <SettingHelpLink target="_blank" href={docsWebsite}>
@@ -350,7 +367,7 @@ const ProviderSetting: FC<Props> = ({ provider: _provider }) => {
           </SettingHelpLink>
           <SettingHelpText>{t('settings.provider.docs_more_details')}</SettingHelpText>
         </SettingHelpTextRow>
-      )} */}
+      )}
       <Flex gap={10} style={{ marginTop: '10px' }}>
         <Button type="primary" onClick={onManageModel} icon={<EditOutlined />}>
           {t('button.manage')}
@@ -358,7 +375,7 @@ const ProviderSetting: FC<Props> = ({ provider: _provider }) => {
         <Button type="default" onClick={onAddModel} icon={<PlusOutlined />}>
           {t('button.add')}
         </Button>
-      </Flex>
+      </Flex> */}
       {models.map((model) => (
         <ModelEditContent
           model={model}
@@ -372,48 +389,56 @@ const ProviderSetting: FC<Props> = ({ provider: _provider }) => {
   )
 }
 
-const ModelListItem = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 5px 0;
-`
+// const ModelListItem = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+//   justify-content: space-between;
+//   padding: 5px 0;
+// `
 
-const ModelListHeader = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`
+// const ModelListHeader = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+// `
 
-const ModelNameRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
-`
+// const ModelNameRow = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+//   gap: 10px;
+// `
 
-const RemoveIcon = styled(MinusCircleOutlined)`
-  font-size: 18px;
-  margin-left: 10px;
-  color: var(--color-error);
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-`
+// const RemoveIcon = styled(MinusCircleOutlined)`
+//   font-size: 18px;
+//   margin-left: 10px;
+//   color: var(--color-error);
+//   cursor: pointer;
+//   transition: all 0.2s ease-in-out;
+// `
 
-const SettingIcon = styled(SettingOutlined)`
-  margin-left: 2px;
-  color: var(--color-text);
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  &:hover {
-    color: var(--color-text-2);
-  }
-`
+// const HoveredRemoveIcon = styled(RemoveIcon)`
+//   opacity: 0;
+//   margin-top: 2px;
+//   &:hover {
+//     opacity: 1;
+//   }
+// `
 
-const ProviderName = styled.span`
-  font-size: 14px;
-  font-weight: 500;
-`
+// const SettingIcon = styled(SettingOutlined)`
+//   margin-left: 2px;
+//   color: var(--color-text);
+//   cursor: pointer;
+//   transition: all 0.2s ease-in-out;
+//   &:hover {
+//     color: var(--color-text-2);
+//   }
+// `
+
+// const ProviderName = styled.span`
+//   font-size: 14px;
+//   font-weight: 500;
+// `
 
 export default ProviderSetting

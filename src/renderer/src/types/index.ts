@@ -276,6 +276,8 @@ export type GenerateImageParams = {
   guidanceScale: number
   signal?: AbortSignal
   promptEnhancement?: boolean
+  height?: number
+  width?: number
 }
 
 export interface TranslateHistory {

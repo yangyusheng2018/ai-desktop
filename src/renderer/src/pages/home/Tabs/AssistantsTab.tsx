@@ -67,7 +67,7 @@ const Assistants: FC<AssistantsTabProps> = ({
           </AssistantName>
         </AssistantAddItem>
       )}
-      {!dragging && (
+      {/* {!dragging && (
         <AssistantAddItem
           onClick={() => {
             navigate('/agents')
@@ -77,7 +77,7 @@ const Assistants: FC<AssistantsTabProps> = ({
             {t('agents.title')}
           </AssistantName>
         </AssistantAddItem>
-      )}
+      )} */}
       <div style={{ minHeight: 10 }}></div>
     </Container>
   )
