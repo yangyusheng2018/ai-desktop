@@ -4,9 +4,8 @@ import { useSettings } from '@renderer/hooks/useSettings'
 import ImageStorage from '@renderer/services/ImageStorage'
 import { useAppDispatch } from '@renderer/store'
 import { setAvatar } from '@renderer/store/runtime'
-import { setUserName } from '@renderer/store/settings'
 import { compressImage, isEmoji } from '@renderer/utils'
-import { Avatar, Dropdown, Input, Modal, Popover, Upload } from 'antd'
+import { Avatar, Modal, Popover, Upload } from 'antd'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
@@ -131,7 +130,7 @@ const PopupContainer: React.FC<Props> = ({ resolve }) => {
       centered>
       <Center mt="30px">
         <VStack alignItems="center" gap="10px">
-          <Dropdown
+          {/* <Dropdown
             menu={{ items }}
             trigger={['click']}
             open={dropdownOpen}
@@ -142,31 +141,31 @@ const PopupContainer: React.FC<Props> = ({ resolve }) => {
               if (visible) {
                 setEmojiPickerOpen(false)
               }
-            }}>
-            <Popover
-              content={<EmojiPicker onEmojiClick={handleEmojiClick} />}
-              trigger="click"
-              open={emojiPickerOpen}
-              onOpenChange={(visible) => {
-                setEmojiPickerOpen(visible)
-                if (visible) {
-                  setDropdownOpen(false)
-                }
-              }}
-              placement="bottom">
-              {isEmoji(avatar) ? <EmojiAvatar>{avatar}</EmojiAvatar> : <UserAvatar src={avatar} />}
-            </Popover>
-          </Dropdown>
+            }}> */}
+          <Popover
+            content={<EmojiPicker onEmojiClick={handleEmojiClick} />}
+            trigger="click"
+            open={emojiPickerOpen}
+            onOpenChange={(visible) => {
+              setEmojiPickerOpen(visible)
+              if (visible) {
+                setDropdownOpen(false)
+              }
+            }}
+            placement="bottom">
+            {isEmoji(avatar) ? <EmojiAvatar>{avatar}</EmojiAvatar> : <UserAvatar src={avatar} />}
+          </Popover>
+          {/* </Dropdown> */}
         </VStack>
       </Center>
       <HStack alignItems="center" gap="10px" p="20px">
-        <Input
+        {/* <Input
           placeholder={t('settings.general.user_name.placeholder')}
           value={userName}
           onChange={(e) => dispatch(setUserName(e.target.value.trim()))}
           style={{ flex: 1, textAlign: 'center', width: '100%' }}
           maxLength={30}
-        />
+        /> */}
       </HStack>
     </Modal>
   )
