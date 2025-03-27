@@ -398,7 +398,6 @@ export class WindowService {
 
     const theme = configManager.getTheme()
     const isMac = process.platform === 'darwin'
-
     this.selectionMenuWindow = new BrowserWindow({
       width: 280,
       height: 40,
