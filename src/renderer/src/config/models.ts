@@ -1774,7 +1774,8 @@ export const SYSTEM_MODELS: Record<string, Model[]> = {
 export const TEXT_TO_IMAGES_MODELS = [
   {
     // id: 'SD15MultiControlnetGenerateImage/majicmixRealistic_v7.safetensors/majicmixRealistic_v7.safetensors',
-    id: 'sd1.5/majicmixRealistic_betterV6.safetensors',
+    // id: 'sd1.5/majicmixRealistic_betterV6.safetensors',
+    id: 'SolutionBaseGenerateImage/Kolors',
     provider: 'lmstudio',
     name: 'SolutionBaseGenerateImage/Kolors',
     group: 'FLUX'
