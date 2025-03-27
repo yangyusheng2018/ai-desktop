@@ -21,7 +21,14 @@ import { Assistant, AssistantSettings, Model, Topic } from '@renderer/types'
 import { TopicManager } from './useTopic'
 
 export function useAssistants() {
-  const { assistants } = useAppSelector((state) => state.assistants)
+  const { assistants } = useAppSelector((state) => {
+    console.log(state.assistants, 'state.assistants')
+    // state.assistants.assistants=state.assistants.assistants.map((item) => {
+    //   item.model.provider = 'lmstudio'
+    //   return item
+    // })
+    return state.assistants
+  })
   const dispatch = useAppDispatch()
 
   return {

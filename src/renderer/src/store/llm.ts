@@ -22,9 +22,9 @@ export interface LlmState {
 }
 
 const initialState: LlmState = {
-  defaultModel: SYSTEM_MODELS.silicon[1],
-  topicNamingModel: SYSTEM_MODELS.silicon[2],
-  translateModel: SYSTEM_MODELS.silicon[3],
+  defaultModel: SYSTEM_MODELS.lmstudio[1],
+  topicNamingModel: SYSTEM_MODELS.lmstudio[2],
+  translateModel: SYSTEM_MODELS.lmstudio[3],
   providers: [
     {
       id: 'silicon',

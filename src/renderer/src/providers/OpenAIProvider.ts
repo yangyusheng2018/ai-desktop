@@ -648,13 +648,9 @@ export default class OpenAIProvider extends BaseProvider {
   public async models(): Promise<OpenAI.Models.Model[]> {
     console.log('models')
     try {
-      console.log(this.sdk.models, 'this.sdk.models')
       // http://xa1.puhuacloud.com:23311/app-api/ai/openai/v1/chat/completions
       // /openai/v1/chat/completions
-      const response = await this.sdk.models.list({
-        method: 'post',
-        path: 'http://xa1.puhuacloud.com:23311/app-api/ai/v1/chat/completions'
-      })
+      const response = await this.sdk.models.list()
       console.log('response')
       if (this.provider.id === 'github') {
         // @ts-ignore key is not typed

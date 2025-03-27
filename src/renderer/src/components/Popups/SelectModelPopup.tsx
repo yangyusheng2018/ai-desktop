@@ -85,9 +85,10 @@ const PopupContainer: React.FC<PopupContainerProps> = ({ model, resolve }) => {
     },
     [searchText, t]
   )
-
   const filteredItems: MenuItem[] = providers
-    .filter((p) => p.models && p.models.length > 0)
+    .filter((p) => {
+      return p.models && p.models.length > 0 && p.id === 'lmstudio'
+    })
     .map((p) => {
       const filteredModels = getFilteredModels(p).map((m) => ({
         key: getModelUniqId(m),
@@ -116,7 +117,7 @@ const PopupContainer: React.FC<PopupContainerProps> = ({ model, resolve }) => {
           setOpen(false)
         }
       }))
-
+      console.log(filteredModels, 'filteredModels')
       // Only return the group if it has filtered models
       return filteredModels.length > 0
         ? {

@@ -462,36 +462,61 @@ export const SYSTEM_MODELS: Record<string, Model[]> = {
     }
   ],
   ollama: [],
-  lmstudio: [],
-  silicon: [
+  lmstudio: [
     {
       id: 'deepseek-ai/DeepSeek-R1',
       name: 'deepseek-ai/DeepSeek-R1',
-      provider: 'silicon',
+      provider: 'lmstudio',
       group: 'deepseek-ai'
     },
     {
       id: 'deepseek-ai/DeepSeek-V3',
       name: 'deepseek-ai/DeepSeek-V3',
-      provider: 'silicon',
+      provider: 'lmstudio',
       group: 'deepseek-ai'
     },
     {
       id: 'Qwen/Qwen2.5-7B-Instruct',
-      provider: 'silicon',
+      provider: 'lmstudio',
       name: 'Qwen2.5-7B-Instruct',
       group: 'Qwen'
     },
     {
       id: 'meta-llama/Llama-3.3-70B-Instruct',
       name: 'meta-llama/Llama-3.3-70B-Instruct',
-      provider: 'silicon',
+      provider: 'lmstudio',
+      group: 'meta-llama'
+    }
+  ],
+  silicon: [
+    {
+      id: 'deepseek-ai/DeepSeek-R1',
+      name: 'deepseek-ai/DeepSeek-R1',
+      provider: 'lmstudio',
+      group: 'deepseek-ai'
+    },
+    {
+      id: 'deepseek-ai/DeepSeek-V3',
+      name: 'deepseek-ai/DeepSeek-V3',
+      provider: 'lmstudio',
+      group: 'deepseek-ai'
+    },
+    {
+      id: 'Qwen/Qwen2.5-7B-Instruct',
+      provider: 'lmstudio',
+      name: 'Qwen2.5-7B-Instruct',
+      group: 'Qwen'
+    },
+    {
+      id: 'meta-llama/Llama-3.3-70B-Instruct',
+      name: 'meta-llama/Llama-3.3-70B-Instruct',
+      provider: 'lmstudio',
       group: 'meta-llama'
     },
     {
       id: 'BAAI/bge-m3',
       name: 'BAAI/bge-m3',
-      provider: 'silicon',
+      provider: 'lmstudio',
       group: 'BAAI'
     }
   ],
@@ -1750,73 +1775,73 @@ export const TEXT_TO_IMAGES_MODELS = [
   {
     // id: 'SD15MultiControlnetGenerateImage/majicmixRealistic_v7.safetensors/majicmixRealistic_v7.safetensors',
     id: 'sd1.5/majicmixRealistic_betterV6.safetensors',
-    provider: 'silicon',
+    provider: 'lmstudio',
     name: 'SolutionBaseGenerateImage/Kolors',
     group: 'FLUX'
   }
   // {
   //   id: 'black-forest-labs/FLUX.1-schnell',
-  //   provider: 'silicon',
+  //   provider: 'lmstudio',
   //   name: 'FLUX.1 Schnell',
   //   group: 'FLUX'
   // },
   // {
   //   id: 'black-forest-labs/FLUX.1-dev',
-  //   provider: 'silicon',
+  //   provider: 'lmstudio',
   //   name: 'FLUX.1 Dev',
   //   group: 'FLUX'
   // },
   // {
   //   id: 'black-forest-labs/FLUX.1-pro',
-  //   provider: 'silicon',
+  //   provider: 'lmstudio',
   //   name: 'FLUX.1 Pro',
   //   group: 'FLUX'
   // },
   // {
   //   id: 'Pro/black-forest-labs/FLUX.1-schnell',
-  //   provider: 'silicon',
+  //   provider: 'lmstudio',
   //   name: 'FLUX.1 Schnell Pro',
   //   group: 'FLUX'
   // },
   // {
   //   id: 'LoRA/black-forest-labs/FLUX.1-dev',
-  //   provider: 'silicon',
+  //   provider: 'lmstudio',
   //   name: 'FLUX.1 Dev LoRA',
   //   group: 'FLUX'
   // },
   // {
   //   id: 'deepseek-ai/Janus-Pro-7B',
-  //   provider: 'silicon',
+  //   provider: 'lmstudio',
   //   name: 'Janus-Pro-7B',
   //   group: 'deepseek-ai'
   // },
   // {
   //   id: 'stabilityai/stable-diffusion-3-5-large',
-  //   provider: 'silicon',
+  //   provider: 'lmstudio',
   //   name: 'Stable Diffusion 3.5 Large',
   //   group: 'Stable Diffusion'
   // },
   // {
   //   id: 'stabilityai/stable-diffusion-3-5-large-turbo',
-  //   provider: 'silicon',
+  //   provider: 'lmstudio',
   //   name: 'Stable Diffusion 3.5 Large Turbo',
   //   group: 'Stable Diffusion'
   // },
   // {
   //   id: 'stabilityai/stable-diffusion-3-medium',
-  //   provider: 'silicon',
+  //   provider: 'lmstudio',
   //   name: 'Stable Diffusion 3 Medium',
   //   group: 'Stable Diffusion'
   // },
   // {
   //   id: 'stabilityai/stable-diffusion-2-1',
-  //   provider: 'silicon',
+  //   provider: 'lmstudio',
   //   name: 'Stable Diffusion 2.1',
   //   group: 'Stable Diffusion'
   // },
   // {
   //   id: 'stabilityai/stable-diffusion-xl-base-1.0',
-  //   provider: 'silicon',
+  //   provider: 'lmstudio',
   //   name: 'Stable Diffusion XL Base 1.0',
   //   group: 'Stable Diffusion'
   // }

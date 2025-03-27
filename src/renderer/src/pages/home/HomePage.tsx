@@ -16,10 +16,16 @@ let _activeAssistant: Assistant
 const HomePage: FC = () => {
   const { assistants } = useAssistants()
   const navigate = useNavigate()
+  // console.log(assistants, 'assistants')
+  // assistants = assistants.map((item) => {
+  //   if (item.model) {
+  //     item.model.provider = 'lmstudio'
+  //   }
+  //   return item
+  // })
 
   const location = useLocation()
   const state = location.state
-
   const [activeAssistant, setActiveAssistant] = useState(state?.assistant || _activeAssistant || assistants[0])
   const { activeTopic, setActiveTopic } = useActiveTopic(activeAssistant, state?.topic)
   const { showAssistants, showTopics, topicPosition } = useSettings()

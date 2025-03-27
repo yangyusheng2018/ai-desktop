@@ -13,7 +13,7 @@ const SettingsPage: FC = () => {
     name: 'LM Studio',
     type: 'openai' as ProviderType,
     apiKey: '',
-    apiHost: 'http://xa1.puhuacloud.com:23311/app-api/ai',
+    apiHost: 'https://auto-openai.cpolar.cn',
     models: [
       {
         id: 'deepseek-ai/DeepSeek-R1',
