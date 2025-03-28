@@ -985,10 +985,10 @@ const migrateConfig = {
         name: 'LM Studio',
         type: 'openai',
         apiKey: '',
-        apiHost: 'http://localhost:1234',
+        apiHost: 'https://auto-openai.cpolar.cn',
         models: SYSTEM_MODELS.lmstudio,
         isSystem: true,
-        enabled: false
+        enabled: true
       },
       {
         id: 'perplexity',
@@ -1055,10 +1055,10 @@ const migrateConfig = {
         name: 'LM Studio',
         type: 'openai',
         apiKey: '',
-        apiHost: 'http://localhost:1234',
+        apiHost: 'https://auto-openai.cpolar.cn',
         models: SYSTEM_MODELS.lmstudio,
         isSystem: true,
-        enabled: false
+        enabled: true
       })
     }
 
@@ -1134,10 +1134,10 @@ const migrateConfig = {
         name: 'LM Studio',
         type: 'openai',
         apiKey: '',
-        apiHost: 'http://localhost:1234',
+        apiHost: 'https://auto-openai.cpolar.cn',
         models: SYSTEM_MODELS.lmstudio,
         isSystem: true,
-        enabled: false
+        enabled: true
       })
     }
 

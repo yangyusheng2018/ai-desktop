@@ -22,15 +22,14 @@ import { TopicManager } from './useTopic'
 
 export function useAssistants() {
   const { assistants } = useAppSelector((state) => {
-    console.log(state.assistants, 'state.assistants')
     // state.assistants.assistants=state.assistants.assistants.map((item) => {
     //   item.model.provider = 'lmstudio'
     //   return item
     // })
+    // console.log(state.assistants, 'state.assistants')
     return state.assistants
   })
   const dispatch = useAppDispatch()
-
   return {
     assistants,
     updateAssistants: (assistants: Assistant[]) => dispatch(updateAssistants(assistants)),
@@ -48,7 +47,12 @@ export function useAssistant(id: string) {
   const assistant = useAppSelector((state) => state.assistants.assistants.find((a) => a.id === id) as Assistant)
   const dispatch = useAppDispatch()
   const { defaultModel } = useDefaultModel()
-
+  // ?? {
+  //   id: 'DeepSeek-R1满血版',
+  //   name: 'DeepSeek-R1满血版',
+  //   provider: 'lmstudio',
+  //   group: 'deepseek-ai'
+  // }
   return {
     assistant,
     model: assistant?.model ?? assistant?.defaultModel ?? defaultModel,

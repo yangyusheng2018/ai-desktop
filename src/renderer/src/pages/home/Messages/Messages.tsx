@@ -52,7 +52,6 @@ const Messages: FC<Props> = ({ assistant, topic, setActiveTopic }) => {
   const LOAD_MORE_COUNT = 20
 
   messagesRef.current = messages
-
   const maxWidth = useMemo(() => {
     const showRightTopics = showTopics && topicPosition === 'right'
     const minusAssistantsWidth = showAssistants ? '- var(--assistants-width)' : ''

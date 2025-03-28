@@ -16,38 +16,38 @@ const SettingsPage: FC = () => {
     apiHost: 'https://auto-openai.cpolar.cn',
     models: [
       {
-        id: 'deepseek-ai/DeepSeek-R1',
-        name: 'deepseek-ai/DeepSeek-R1',
+        id: 'DeepSeek-R1满血版',
+        name: 'DeepSeek-R1满血版',
         provider: 'lmstudio',
         group: 'deepseek-ai'
-      },
-      {
-        id: 'deepseek-ai/DeepSeek-V3',
-        name: 'deepseek-ai/DeepSeek-V3',
-        provider: 'lmstudio',
-        group: 'deepseek-ai'
-      },
-      {
-        id: 'Qwen/Qwen2.5-7B-Instruct',
-        provider: 'lmstudio',
-        name: 'Qwen2.5-7B-Instruct',
-        group: 'Qwen'
-      },
-      {
-        id: 'meta-llama/Llama-3.3-70B-Instruct',
-        name: 'meta-llama/Llama-3.3-70B-Instruct',
-        provider: 'lmstudio',
-        group: 'meta-llama'
-      },
-      {
-        id: 'BAAI/bge-m3',
-        name: 'BAAI/bge-m3',
-        provider: 'lmstudio',
-        group: 'BAAI'
       }
+      // {
+      //   id: 'deepseek-ai/DeepSeek-V3',
+      //   name: 'deepseek-ai/DeepSeek-V3',
+      //   provider: 'lmstudio',
+      //   group: 'deepseek-ai'
+      // },
+      // {
+      //   id: 'Qwen/Qwen2.5-7B-Instruct',
+      //   provider: 'lmstudio',
+      //   name: 'Qwen2.5-7B-Instruct',
+      //   group: 'Qwen'
+      // },
+      // {
+      //   id: 'meta-llama/Llama-3.3-70B-Instruct',
+      //   name: 'meta-llama/Llama-3.3-70B-Instruct',
+      //   provider: 'lmstudio',
+      //   group: 'meta-llama'
+      // },
+      // {
+      //   id: 'BAAI/bge-m3',
+      //   name: 'BAAI/bge-m3',
+      //   provider: 'lmstudio',
+      //   group: 'BAAI'
+      // }
     ],
     isSystem: true,
-    enabled: false
+    enabled: true
   }
   return (
     <Container>

@@ -34,7 +34,7 @@ const MessageSearchResults: FC<Props> = ({ message }) => {
     <>
       <Container className="footnotes">
         <TitleRow>
-          <Title>{t('common.footnotes')}</Title>
+          <Title>{t('common.footnotes')} </Title>
           <InfoCircleOutlined />
         </TitleRow>
         <Sources>

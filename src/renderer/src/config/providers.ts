@@ -423,7 +423,7 @@ export const PROVIDER_CONFIG = {
   },
   lmstudio: {
     api: {
-      url: 'http://localhost:1234'
+      url: 'https://auto-openai.cpolar.cn'
     },
     websites: {
       official: 'https://lmstudio.ai/',

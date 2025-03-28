@@ -22,89 +22,19 @@ export interface LlmState {
 }
 
 const initialState: LlmState = {
-  defaultModel: SYSTEM_MODELS.lmstudio[1],
-  topicNamingModel: SYSTEM_MODELS.lmstudio[2],
-  translateModel: SYSTEM_MODELS.lmstudio[3],
+  defaultModel: SYSTEM_MODELS.lmstudio[0],
+  topicNamingModel: SYSTEM_MODELS.lmstudio[0],
+  translateModel: SYSTEM_MODELS.lmstudio[0],
   providers: [
-    {
-      id: 'silicon',
-      name: 'Silicon',
-      type: 'openai',
-      apiKey: '',
-      apiHost: 'https://api.siliconflow.cn',
-      models: SYSTEM_MODELS.silicon,
-      isSystem: true,
-      enabled: true
-    },
-    {
-      id: 'o3',
-      name: 'O3',
-      type: 'openai',
-      apiKey: '',
-      apiHost: 'https://api.o3.fan',
-      models: SYSTEM_MODELS.o3,
-      isSystem: true,
-      enabled: false
-    },
-    {
-      id: 'aihubmix',
-      name: 'AiHubMix',
-      type: 'openai',
-      apiKey: '',
-      apiHost: 'https://aihubmix.com',
-      models: SYSTEM_MODELS.aihubmix,
-      isSystem: true,
-      enabled: false
-    },
-    {
-      id: 'deepseek',
-      name: 'deepseek',
-      type: 'openai',
-      apiKey: '',
-      apiHost: 'https://api.deepseek.com',
-      models: SYSTEM_MODELS.deepseek,
-      isSystem: true,
-      enabled: false
-    },
-    {
-      id: 'ocoolai',
-      name: 'ocoolAI',
-      type: 'openai',
-      apiKey: '',
-      apiHost: 'https://api.ocoolai.com',
-      models: SYSTEM_MODELS.ocoolai,
-      isSystem: true,
-      enabled: false
-    },
-    {
-      id: 'baidu-cloud',
-      name: 'Baidu Cloud',
-      type: 'openai',
-      apiKey: '',
-      apiHost: 'https://qianfan.baidubce.com/v2/',
-      models: SYSTEM_MODELS['baidu-cloud'],
-      isSystem: true,
-      enabled: false
-    },
-    {
-      id: 'ollama',
-      name: 'Ollama',
-      type: 'openai',
-      apiKey: '',
-      apiHost: 'http://localhost:11434',
-      models: SYSTEM_MODELS.ollama,
-      isSystem: true,
-      enabled: false
-    },
     {
       id: 'lmstudio',
       name: 'LM Studio',
       type: 'openai',
       apiKey: '',
-      apiHost: 'http://localhost:1234',
+      apiHost: 'https://auto-openai.cpolar.cn',
       models: SYSTEM_MODELS.lmstudio,
       isSystem: true,
-      enabled: false
+      enabled: true
     },
     {
       id: 'anthropic',

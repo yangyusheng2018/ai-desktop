@@ -74,7 +74,6 @@ export default class OpenAIProvider extends BaseProvider {
   ): Promise<OpenAI.Chat.Completions.ChatCompletionMessageParam> {
     const isVision = isVisionModel(model)
     const content = await this.getMessageContent(message)
-
     if (!message.files) {
       return {
         role: message.role,
@@ -348,22 +347,22 @@ export default class OpenAIProvider extends BaseProvider {
         const citations = (chunk as OpenAI.Chat.Completions.ChatCompletionChunk & { citations?: string[] })?.citations
 
         const finishReason = chunk.choices[0]?.finish_reason
-
-        if (delta?.tool_calls) {
-          const chunkToolCalls: OpenAI.Chat.Completions.ChatCompletionChunk.Choice.Delta.ToolCall[] = delta.tool_calls
-          if (finishReason !== 'tool_calls') {
-            if (toolCalls.length === 0) {
-              for (const toolCall of chunkToolCalls) {
-                toolCalls.push(toolCall as ChatCompletionMessageToolCall)
-              }
-            } else {
-              for (let i = 0; i < chunkToolCalls.length; i++) {
-                toolCalls[i].function.arguments += chunkToolCalls[i].function?.arguments || ''
-              }
-            }
-            continue
-          }
-        }
+        // console.log(finishReason, 'stream111')
+        // if (delta?.tool_calls) {
+        //   const chunkToolCalls: OpenAI.Chat.Completions.ChatCompletionChunk.Choice.Delta.ToolCall[] = delta.tool_calls
+        //   if (finishReason !== 'tool_calls') {
+        //     if (toolCalls.length === 0) {
+        //       for (const toolCall of chunkToolCalls) {
+        //         toolCalls.push(toolCall as ChatCompletionMessageToolCall)
+        //       }
+        //     } else {
+        //       for (let i = 0; i < chunkToolCalls.length; i++) {
+        //         toolCalls[i].function.arguments += chunkToolCalls[i].function?.arguments || ''
+        //       }
+        //     }
+        //     continue
+        //   }
+        // }
 
         if (finishReason === 'tool_calls') {
           console.log('start invoke tools', toolCalls)
@@ -651,7 +650,6 @@ export default class OpenAIProvider extends BaseProvider {
       // http://xa1.puhuacloud.com:23311/app-api/ai/openai/v1/chat/completions
       // /openai/v1/chat/completions
       const response = await this.sdk.models.list()
-      console.log('response')
       if (this.provider.id === 'github') {
         // @ts-ignore key is not typed
         return response.body
@@ -677,7 +675,6 @@ export default class OpenAIProvider extends BaseProvider {
       }
 
       const models = response?.data || []
-      console.log('modelsresponse')
       return models.filter(isSupportedModel)
     } catch (error) {
       return []

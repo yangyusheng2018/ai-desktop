@@ -17,7 +17,6 @@ interface Props {
 const SelectModelButton: FC<Props> = ({ assistant }) => {
   const { model, setModel } = useAssistant(assistant.id)
   const { t } = useTranslation()
-
   if (isLocalAi) {
     return null
   }

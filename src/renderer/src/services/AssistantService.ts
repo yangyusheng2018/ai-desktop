@@ -17,6 +17,12 @@ export function getDefaultAssistant(): Assistant {
     topics: [getDefaultTopic('default')],
     messages: [],
     type: 'assistant'
+    // defaultModel: {
+    //   id: 'DeepSeek-R1满血版',
+    //   name: 'DeepSeek-R1满血版',
+    //   provider: 'lmstudio',
+    //   group: 'deepseek-ai'
+    // }
   }
 }
 export function getManyDefaultAssistant(): Assistant[] {
@@ -29,6 +35,12 @@ export function getManyDefaultAssistant(): Assistant[] {
       topics: [getDefaultTopic('default')],
       messages: [],
       type: 'assistant'
+      // defaultModel: {
+      //   id: 'DeepSeek-R1满血版',
+      //   name: 'DeepSeek-R1满血版',
+      //   provider: 'lmstudio',
+      //   group: 'deepseek-ai'
+      // }
     },
     {
       id: '2aa5e997-6bf3-4bff-bbe5-e3f9d3994b18',

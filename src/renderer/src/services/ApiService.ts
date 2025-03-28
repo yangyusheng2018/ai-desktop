@@ -31,7 +31,6 @@ export async function fetchChatCompletion({
   onResponse: (message: Message) => void
 }) {
   window.keyv.set(EVENT_NAMES.CHAT_COMPLETION_PAUSED, false)
-
   const provider = getAssistantProvider(assistant)
   const webSearchProvider = WebSearchService.getWebSearchProvider()
   const AI = new AiProvider(provider)

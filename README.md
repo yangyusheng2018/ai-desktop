@@ -7,7 +7,7 @@
 <div align="center">
  <a href="https://trendshift.io/repositories/11772" target="_blank"><img src="https://trendshift.io/api/badge/repositories/11772" alt="kangfenmao%2Fcherry-studio | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 </div>
-
+<!-- sk-532b83ef1b1b485c89e77735533e24e7 -->
 # 🍒 Cherry Studio
 
 Cherry Studio is a desktop client that supports for multiple LLM providers, available on Windows, Mac and Linux.
