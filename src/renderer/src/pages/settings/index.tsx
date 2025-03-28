@@ -12,7 +12,8 @@ export const SettingContainer = styled.div<{ theme?: ThemeMode }>`
   padding-top: 15px;
   overflow-y: scroll;
   font-family: Ubuntu;
-  background: ${(props) => (props.theme === 'dark' ? 'transparent' : 'var(--color-background-soft)')};
+  // background: ${(props) => (props.theme === 'dark' ? 'transparent' : 'var(--color-background-soft)')};
+  background: ${(props) => (props.theme === 'dark' ? 'transparent' : 'transparent')};
 
   &::-webkit-scrollbar {
     display: none;

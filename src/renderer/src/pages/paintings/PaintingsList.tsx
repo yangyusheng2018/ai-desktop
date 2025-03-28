@@ -135,7 +135,7 @@ const NewPaintingButton = styled.div`
   height: 80px;
   min-height: 80px;
   margin-top: -10px;
-  background-color: var(--color-background-soft);
+  // background-color: var(--color-background-soft);
   cursor: pointer;
   transition: background-color 0.2s ease;
   border: 1px dashed var(--color-border);

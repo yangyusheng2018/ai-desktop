@@ -382,12 +382,14 @@ const TopicListItem = styled.div`
   &:hover {
     background-color: var(--color-background-soft);
     .name {
+      color: #fff;
     }
   }
   &.active {
     background-color: var(--color-background-soft);
     border: 0.5px solid var(--color-border);
     .name {
+      color: #fff;
     }
     .menu {
       opacity: 1;

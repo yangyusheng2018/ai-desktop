@@ -372,7 +372,7 @@ const OutputContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: var(--color-background-soft);
+  // background-color: var(--color-background-soft);
   border-radius: 10px;
   padding-bottom: 5px;
   padding-right: 2px;

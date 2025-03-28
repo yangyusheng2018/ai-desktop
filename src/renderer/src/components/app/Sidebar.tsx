@@ -280,7 +280,8 @@ const Icon = styled.div`
     cursor: pointer;
     .iconfont,
     .anticon {
-      color: var(--color-icon-white);
+      // color: var(--color-icon-white);
+      color: #fff;
     }
   }
   &.active {
@@ -288,7 +289,8 @@ const Icon = styled.div`
     border: 0.5px solid var(--color-border);
     .iconfont,
     .anticon {
-      color: var(--color-icon-white);
+      // color: var(--color-icon-white);
+      color: #fff;
     }
   }
 `

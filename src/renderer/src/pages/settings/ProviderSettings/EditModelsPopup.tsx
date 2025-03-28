@@ -261,7 +261,7 @@ const ListHeader = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--color-background-soft);
+  // background-color: var(--color-background-soft);
   padding: 8px 22px;
   color: var(--color-text);
   opacity: 0.4;

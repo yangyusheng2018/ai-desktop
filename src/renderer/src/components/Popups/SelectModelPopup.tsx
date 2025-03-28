@@ -405,6 +405,7 @@ const SearchIcon = styled.div`
   align-items: center;
   background-color: var(--color-background-soft);
   margin-right: 2px;
+  color: #fff;
 `
 
 const PinIcon = styled.span.attrs({ className: 'pin-icon' })<{ isPinned: boolean }>`

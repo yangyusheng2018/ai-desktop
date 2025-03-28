@@ -7,6 +7,7 @@
 
 :root {
   --color-white: #ffffff;
+  // --color-white: #004efe;
   --color-white-soft: rgba(255, 255, 255, 0.8);
   --color-white-mute: rgba(255, 255, 255, 0.94);
 
@@ -72,8 +73,10 @@
 
 body[theme-mode='light'] {
   --color-white: #ffffff;
-  --color-white-soft: #f2f2f2;
-  --color-white-mute: #eee;
+  // --color-white-soft: #f2f2f2;
+  --color-white-soft: #4879ec;
+  // --color-white-mute: #eee;
+  --color-white-mute: #4879ec;
 
   --color-black: #1b1b1f;
   --color-black-soft: #262626;
