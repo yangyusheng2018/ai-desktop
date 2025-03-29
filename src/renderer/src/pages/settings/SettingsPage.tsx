@@ -10,7 +10,7 @@ const SettingsPage: FC = () => {
 
   const provider = {
     id: 'lmstudio',
-    name: 'LM Studio',
+    name: '普华大模型',
     type: 'openai' as ProviderType,
     apiKey: '',
     apiHost: 'https://auto-openai.cpolar.cn',

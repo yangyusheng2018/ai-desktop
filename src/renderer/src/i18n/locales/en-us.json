@@ -344,7 +344,7 @@
       "keep_alive_time.description": "The time in minutes to keep the connection alive, default is 5 minutes.",
       "keep_alive_time.placeholder": "Minutes",
       "keep_alive_time.title": "Keep Alive Time",
-      "title": "LM Studio"
+      "title": "普华大模型"
     },
     "mermaid": {
       "download": {
@@ -553,7 +553,7 @@
       "hyperbolic": "Hyperbolic",
       "infini": "Infini",
       "jina": "Jina",
-      "lmstudio": "LM Studio",
+      "lmstudio": "普华大模型",
       "minimax": "MiniMax",
       "mistral": "Mistral",
       "modelscope": "ModelScope",

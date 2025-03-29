@@ -344,7 +344,7 @@
       "keep_alive_time.description": "對話後模型在記憶體中保持的時間（預設為 5 分鐘）。",
       "keep_alive_time.placeholder": "分鐘",
       "keep_alive_time.title": "保持活躍時間",
-      "title": "LM Studio"
+      "title": "普华大模型"
     },
     "mermaid": {
       "download": {
@@ -479,7 +479,7 @@
       },
       "vision": "視覺",
       "websearch": "網路搜尋",
-      "edit": "編輯模型", 
+      "edit": "編輯模型",
       "no_matches": "無可用模型"
     },
     "navbar": {
@@ -553,7 +553,7 @@
       "hyperbolic": "Hyperbolic",
       "infini": "無問芯穹",
       "jina": "Jina",
-      "lmstudio": "LM Studio",
+      "lmstudio": "普华大模型",
       "minimax": "MiniMax",
       "mistral": "Mistral",
       "modelscope": "ModelScope 魔搭",

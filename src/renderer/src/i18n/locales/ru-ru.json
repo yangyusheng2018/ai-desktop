@@ -344,7 +344,7 @@
       "keep_alive_time.description": "Время в минутах, в течение которого модель остается активной, по умолчанию 5 минут.",
       "keep_alive_time.placeholder": "Минуты",
       "keep_alive_time.title": "Время жизни модели",
-      "title": "LM Studio"
+      "title": "普华大模型"
     },
     "mermaid": {
       "download": {
@@ -479,7 +479,7 @@
       },
       "vision": "Визуальные",
       "websearch": "Веб-поисковые",
-      "edit": "Редактировать модель", 
+      "edit": "Редактировать модель",
       "no_matches": "Нет доступных моделей"
     },
     "navbar": {
@@ -553,7 +553,7 @@
       "hyperbolic": "Hyperbolic",
       "infini": "Infini",
       "jina": "Jina",
-      "lmstudio": "LM Studio",
+      "lmstudio": "普华大模型",
       "minimax": "MiniMax",
       "mistral": "Mistral",
       "modelscope": "ModelScope",
@@ -972,4 +972,3 @@
     }
   }
 }
-

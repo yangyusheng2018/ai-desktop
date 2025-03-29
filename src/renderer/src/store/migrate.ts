@@ -982,7 +982,7 @@ const migrateConfig = {
       },
       {
         id: 'lmstudio',
-        name: 'LM Studio',
+        name: '普华大模型',
         type: 'openai',
         apiKey: '',
         apiHost: 'https://auto-openai.cpolar.cn',
@@ -1052,7 +1052,7 @@ const migrateConfig = {
     if (!state.llm.providers.find((provider) => provider.id === 'lmstudio')) {
       state.llm.providers.push({
         id: 'lmstudio',
-        name: 'LM Studio',
+        name: '普华大模型',
         type: 'openai',
         apiKey: '',
         apiHost: 'https://auto-openai.cpolar.cn',
@@ -1131,7 +1131,7 @@ const migrateConfig = {
     if (!state.llm.providers.find((provider) => provider.id === 'lmstudio')) {
       state.llm.providers.push({
         id: 'lmstudio',
-        name: 'LM Studio',
+        name: '普华大模型',
         type: 'openai',
         apiKey: '',
         apiHost: 'https://auto-openai.cpolar.cn',

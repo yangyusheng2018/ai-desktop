@@ -28,7 +28,7 @@ const initialState: LlmState = {
   providers: [
     {
       id: 'lmstudio',
-      name: 'LM Studio',
+      name: '普华大模型',
       type: 'openai',
       apiKey: '',
       apiHost: 'https://auto-openai.cpolar.cn',
