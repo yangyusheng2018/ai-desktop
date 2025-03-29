@@ -80,7 +80,12 @@ const Container = styled(Scrollbar)`
 
 const CanvasWrapper = styled.div`
   position: relative;
-
+  & > div {
+    background-color: #c8c9cb;
+    &:hover {
+      background-color: #c8c9cb;
+    }
+  }
   &:hover {
     .delete-button {
       opacity: 1;
@@ -143,9 +148,9 @@ const NewPaintingButton = styled.div`
   align-items: center;
   justify-content: center;
   color: var(--color-text-2);
-
+  background-color: #c8c9cb;
   &:hover {
-    background-color: var(--color-background-mute);
+    background-color: #c8c9cb;
     border-color: var(--color-primary);
     color: var(--color-primary);
   }

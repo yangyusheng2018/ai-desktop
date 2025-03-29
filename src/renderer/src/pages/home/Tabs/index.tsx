@@ -157,7 +157,6 @@ const TabContent = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
 `
-
 const Segmented = styled(AntSegmented)`
   &.ant-segmented {
     background-color: transparent;
@@ -175,10 +174,14 @@ const Segmented = styled(AntSegmented)`
     border-radius: var(--list-item-border-radius);
     box-shadow: none;
   }
+  .ant-segmented-item-label[aria-selected='true'] {
+    color: #fff;
+  }
   .ant-segmented-item-selected {
     background-color: var(--color-background-soft);
     border: 0.5px solid var(--color-border);
     transition: none !important;
+    color: #fff;
   }
   .ant-segmented-item-label {
     align-items: center;

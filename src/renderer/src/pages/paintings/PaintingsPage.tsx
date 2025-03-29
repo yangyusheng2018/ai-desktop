@@ -24,7 +24,7 @@ import { DEFAULT_PAINTING } from '@renderer/store/paintings'
 import { setGenerating } from '@renderer/store/runtime'
 import { FileType, Painting } from '@renderer/types'
 import { getErrorMessage } from '@renderer/utils'
-import { Button, Input, InputNumber, Radio, Select, Slider, Switch, Tooltip } from 'antd'
+import { Button, Input, InputNumber, Radio, Select, Slider as AndtSlider, Switch, Tooltip } from 'antd'
 import TextArea from 'antd/es/input/TextArea'
 import { FC, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -370,7 +370,13 @@ const PaintingsPage: FC = () => {
             </Tooltip>
           </SettingTitle>
           <SliderContainer>
-            <Slider min={1} max={50} value={painting.steps} onChange={(v) => updatePaintingState({ steps: v })} />
+            <Slider
+              min={1}
+              max={50}
+              value={painting.steps}
+              onChange={(v) => updatePaintingState({ steps: v })}
+              handleStyle={{ backgroundColor: '#4879ec', boxShadow: '0 0 0 2px #4879ec !important' }}
+            />
             <StyledInputNumber
               min={1}
               max={50}
@@ -585,6 +591,20 @@ const SliderContainer = styled.div`
 
 const StyledInputNumber = styled(InputNumber)`
   width: 70px;
+`
+const Slider = styled(AndtSlider)`
+  .ant-slider-track {
+    background-color: #4879ec !important;
+    &:hover {
+      background-color: #4879ec !important;
+    }
+  }
+  .ant-slider:hover .ant-slider-track {
+    background-color: #4879ec !important;
+  }
+  .ant-slider-handle::after {
+    box-shadow: 0 0 0 2px #4879ec !important;
+  }
 `
 
 export default PaintingsPage
