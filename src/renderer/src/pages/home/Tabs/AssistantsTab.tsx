@@ -105,6 +105,14 @@ const AssistantAddItem = styled.div`
 
   &:hover {
     background-color: var(--color-background-soft);
+    div {
+      span {
+        svg {
+          color: #fff;
+        }
+      }
+      color: #fff;
+    }
   }
 
   &.active {
