@@ -4,7 +4,7 @@ import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 
-import ProviderSetting from './ProviderSetting'
+import ProviderSetting from './ProviderSettings/ProviderSetting'
 const SettingsPage: FC = () => {
   const { t } = useTranslation()
 
