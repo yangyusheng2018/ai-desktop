@@ -48,8 +48,8 @@ export function useAssistant(id: string) {
   const dispatch = useAppDispatch()
   const { defaultModel } = useDefaultModel()
   // ?? {
-  //   id: 'DeepSeek-R1满血版',
-  //   name: 'DeepSeek-R1满血版',
+  //   id: 'Qwen2.5-Coder-32B-Instruct-GPTQ-Int4:32k',
+  //   name: 'Qwen2.5-Coder-32B-Instruct-GPTQ-Int4:32k',
   //   provider: 'lmstudio',
   //   group: 'deepseek-ai'
   // }
