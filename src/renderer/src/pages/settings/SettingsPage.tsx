@@ -164,10 +164,10 @@ const MenuItem = styled.li`
     margin-left: -1px;
   }
   &:hover {
-    background: var(--color-background-soft);
+    background: var(--color-background-menu-hover);
   }
   &.active {
-    background: var(--color-background-soft);
+    background: var(--color-background-menu-hover);
     border: 0.5px solid var(--color-border);
   }
 `

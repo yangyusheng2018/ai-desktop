@@ -53,10 +53,10 @@ const Messages: FC<Props> = ({ assistant, topic, setActiveTopic }) => {
 
   messagesRef.current = messages
   const maxWidth = useMemo(() => {
-    const showRightTopics = showTopics && topicPosition === 'right'
-    const minusAssistantsWidth = showAssistants ? '- var(--assistants-width)' : ''
-    const minusRightTopicsWidth = showRightTopics ? '- var(--assistants-width)' : ''
-    return `calc(100vw - var(--sidebar-width) ${minusAssistantsWidth} ${minusRightTopicsWidth} - 5px)`
+    // const showRightTopics = showTopics && topicPosition === 'right'
+    // const minusAssistantsWidth = showAssistants ? '- var(--assistants-width)' : ''
+    // const minusRightTopicsWidth = showRightTopics ? '- var(--assistants-width)' : ''
+    return `calc(100vw - var(--sidebar-width)  - 5px)`
   }, [showAssistants, showTopics, topicPosition])
 
   const scrollToBottom = useCallback(() => {

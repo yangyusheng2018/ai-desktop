@@ -77,13 +77,20 @@ const HeaderNavbar: FC<Props> = ({ activeAssistant }) => {
         className="home-navbar-right">
         <HStack alignItems="center">
           {!showAssistants && (
-            <Tooltip title={t('navbar.show_sidebar')} mouseEnterDelay={0.8}>
-              <NavbarIcon
-                onClick={() => toggleShowAssistants()}
-                style={{ marginRight: 8, marginLeft: isMac ? 4 : -12 }}>
-                <i className="iconfont icon-show-sidebar" />
-              </NavbarIcon>
-            </Tooltip>
+            <>
+              <Tooltip title={t('navbar.show_sidebar')} mouseEnterDelay={0.8}>
+                <NavbarIcon
+                  onClick={() => toggleShowAssistants()}
+                  style={{ marginRight: 8, marginLeft: isMac ? 4 : -12 }}>
+                  <i className="iconfont icon-show-sidebar" />
+                </NavbarIcon>
+              </Tooltip>
+              <Tooltip title={t('settings.shortcuts.new_topic')} mouseEnterDelay={0.8}>
+                <NavbarIcon onClick={() => EventEmitter.emit(EVENT_NAMES.ADD_NEW_TOPIC)}>
+                  <FormOutlined />
+                </NavbarIcon>
+              </Tooltip>
+            </>
           )}
           <TitleText
             style={{ marginRight: 10, cursor: 'pointer' }}

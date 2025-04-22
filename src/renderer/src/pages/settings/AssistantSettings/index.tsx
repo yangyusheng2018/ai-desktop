@@ -10,19 +10,25 @@ import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 
 import AssistantKnowledgeBaseSettings from './AssistantKnowledgeBaseSettings'
+import AssistantMessagesSettings from './AssistantMessagesSettings'
+import AssistantModelSettings from './AssistantModelSettings'
+import AssistantPromptSettings from './AssistantPromptSettings'
 
 interface AssistantSettingPopupShowParams {
   assistant: Assistant
+  tab?: AssistantSettingPopupTab
 }
+
+type AssistantSettingPopupTab = 'prompt' | 'model' | 'messages' | 'knowledge_base'
 
 interface Props extends AssistantSettingPopupShowParams {
   resolve: (assistant: Assistant) => void
 }
 
-const AssistantSettingPopupContainer: React.FC<Props> = ({ resolve, ...props }) => {
+const AssistantSettingPopupContainer: React.FC<Props> = ({ resolve, tab, ...props }) => {
   const [open, setOpen] = useState(true)
   const { t } = useTranslation()
-  const [menu, setMenu] = useState('prompt')
+  const [menu, setMenu] = useState<AssistantSettingPopupTab>(tab || 'prompt')
 
   const _useAssistant = useAssistant(props.assistant.id)
   const _useAgent = useAgent(props.assistant.id)
@@ -47,18 +53,18 @@ const AssistantSettingPopupContainer: React.FC<Props> = ({ resolve, ...props }) 
   }
 
   const items = [
-    // {
-    //   key: 'prompt',
-    //   label: t('assistants.settings.prompt')
-    // },
-    // {
-    //   key: 'model',
-    //   label: t('assistants.settings.model')
-    // },
-    // {
-    //   key: 'messages',
-    //   label: t('assistants.settings.preset_messages')
-    // },
+    {
+      key: 'prompt',
+      label: t('assistants.settings.prompt')
+    },
+    {
+      key: 'model',
+      label: t('assistants.settings.model')
+    },
+    {
+      key: 'messages',
+      label: t('assistants.settings.preset_messages')
+    },
     showKnowledgeIcon && {
       key: 'knowledge_base',
       label: t('assistants.settings.knowledge_base')
@@ -91,14 +97,14 @@ const AssistantSettingPopupContainer: React.FC<Props> = ({ resolve, ...props }) 
         <LeftMenu>
           <Menu
             style={{ width: 220, padding: 5, background: 'transparent' }}
-            defaultSelectedKeys={['prompt']}
+            defaultSelectedKeys={[tab || 'prompt']}
             mode="vertical"
             items={items}
-            onSelect={({ key }) => setMenu(key as string)}
+            onSelect={({ key }) => setMenu(key as AssistantSettingPopupTab)}
           />
         </LeftMenu>
         <Settings>
-          {/* {menu === 'prompt' && (
+          {menu === 'prompt' && (
             <AssistantPromptSettings
               assistant={assistant}
               updateAssistant={updateAssistant}
@@ -119,7 +125,7 @@ const AssistantSettingPopupContainer: React.FC<Props> = ({ resolve, ...props }) 
               updateAssistant={updateAssistant}
               updateAssistantSettings={updateAssistantSettings}
             />
-          )} */}
+          )}
           {menu === 'knowledge_base' && showKnowledgeIcon && (
             <AssistantKnowledgeBaseSettings
               assistant={assistant}

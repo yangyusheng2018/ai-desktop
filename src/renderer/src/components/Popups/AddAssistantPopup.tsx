@@ -32,7 +32,9 @@ const PopupContainer: React.FC<Props> = ({ resolve }) => {
 
   const agents = useMemo(() => {
     const allAgents = [...userAgents, ...systemAgents] as Agent[]
-    const list = [defaultAssistant, ...allAgents.filter((agent) => !assistants.map((a) => a.id).includes(agent.id))]
+    const list = [
+      ...[defaultAssistant, ...allAgents].filter((agent) => !assistants.map((a) => a.id).includes(agent.id))
+    ]
     const filtered = searchText
       ? list.filter((agent) => agent.name.toLowerCase().includes(searchText.trim().toLocaleLowerCase()))
       : list
@@ -44,7 +46,7 @@ const PopupContainer: React.FC<Props> = ({ resolve }) => {
         prompt: '',
         topics: [],
         type: 'assistant',
-        emoji: '⭐️'
+        emoji: ''
       }
       return [newAgent, ...filtered]
     }
@@ -126,7 +128,8 @@ const PopupContainer: React.FC<Props> = ({ resolve }) => {
               gap={5}
               style={{ overflow: 'hidden', maxWidth: '100%' }}
               className="text-nowrap">
-              {agent.emoji} {agent.name}
+              {/* {agent.emoji} */}
+              {agent.name}
             </HStack>
             {agent.id === 'default' && <Tag color="green">{t('agents.tag.system')}</Tag>}
             {agent.type === 'agent' && <Tag color="orange">{t('agents.tag.agent')}</Tag>}

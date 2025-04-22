@@ -21,19 +21,27 @@ interface Props {
   setActiveAssistant: (assistant: Assistant) => void
   setActiveTopic: (topic: Topic) => void
   position: 'left' | 'right'
+  activeName?: string
 }
 
 type Tab = 'assistants' | 'topic' | 'settings'
 
 let _tab: any = ''
 
-const HomeTabs: FC<Props> = ({ activeAssistant, activeTopic, setActiveAssistant, setActiveTopic, position }) => {
+const HomeTabs: FC<Props> = ({
+  activeAssistant,
+  activeTopic,
+  setActiveAssistant,
+  setActiveTopic,
+  position,
+  activeName
+}) => {
   const { addAssistant } = useAssistants()
   const [tab, setTab] = useState<Tab>(position === 'left' ? _tab || 'assistants' : 'topic')
   const { topicPosition } = useSettings()
   const { defaultAssistant } = useDefaultAssistant()
   const { toggleShowTopics } = useShowTopics()
-
+  const [activeNameCopy, setActiveNameCopy] = useState('')
   const { t } = useTranslation()
 
   const borderStyle = '0.5px solid var(--color-border)'
@@ -92,10 +100,12 @@ const HomeTabs: FC<Props> = ({ activeAssistant, activeTopic, setActiveAssistant,
       setTab('assistants')
     }
   }, [position, tab, topicPosition])
-
+  useEffect(() => {
+    setActiveNameCopy(activeName ?? '')
+  }, [activeName])
   return (
     <Container style={border} className="home-tabs">
-      {showTab && (
+      {showTab && false && (
         <Segmented
           value={tab}
           style={{ borderRadius: 16, paddingTop: 10, margin: '0 10px', gap: 2 }}
@@ -119,7 +129,7 @@ const HomeTabs: FC<Props> = ({ activeAssistant, activeTopic, setActiveAssistant,
         />
       )}
       <TabContent className="home-tabs-content">
-        {tab === 'assistants' && (
+        {activeNameCopy === 'assistants' && (
           <Assistants
             activeAssistant={activeAssistant}
             setActiveAssistant={setActiveAssistant}
@@ -127,10 +137,10 @@ const HomeTabs: FC<Props> = ({ activeAssistant, activeTopic, setActiveAssistant,
             onCreateDefaultAssistant={onCreateDefaultAssistant}
           />
         )}
-        {tab === 'topic' && (
+        {activeNameCopy === 'topic' && (
           <Topics assistant={activeAssistant} activeTopic={activeTopic} setActiveTopic={setActiveTopic} />
         )}
-        {tab === 'settings' && <Settings assistant={activeAssistant} />}
+        {activeNameCopy === 'settings' && <Settings assistant={activeAssistant} />}
       </TabContent>
     </Container>
   )
@@ -141,7 +151,7 @@ const Container = styled.div`
   flex-direction: column;
   max-width: var(--assistants-width);
   min-width: var(--assistants-width);
-  height: calc(100vh - var(--navbar-height));
+  max-height: 600px;
   background-color: var(--color-background);
   overflow: hidden;
   .collapsed {

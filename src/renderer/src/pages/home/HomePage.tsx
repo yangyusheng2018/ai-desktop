@@ -54,7 +54,7 @@ const HomePage: FC = () => {
     <Container id="home-page">
       <Navbar activeAssistant={activeAssistant} activeTopic={activeTopic} setActiveTopic={setActiveTopic} />
       <ContentContainer id="content-container">
-        {showAssistants && (
+        {showAssistants && false && (
           <HomeTabs
             activeAssistant={activeAssistant}
             activeTopic={activeTopic}
