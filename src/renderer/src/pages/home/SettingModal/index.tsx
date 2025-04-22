@@ -122,4 +122,7 @@ export default class SettingModalsPopup {
       TopView.show(<SettingModalPopupContainer {...props} />, 'SettingModalsPopup')
     })
   }
+  static close() {
+    TopView.hide('SettingModalsPopup')
+  }
 }

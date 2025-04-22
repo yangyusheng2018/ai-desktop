@@ -95,7 +95,7 @@ const initialState: SettingsState = {
   messageFont: 'system',
   showInputEstimatedTokens: false,
   tray: true,
-  theme: ThemeMode.auto,
+  theme: ThemeMode.light,
   windowStyle: 'transparent',
   fontSize: 14,
   topicPosition: 'left',

@@ -20,7 +20,6 @@ import KnowledgePage from './pages/knowledge/KnowledgePage'
 import PaintingsPage from './pages/paintings/PaintingsPage'
 import SettingsPage from './pages/settings/SettingsPage'
 import TranslatePage from './pages/translate/TranslatePage'
-
 function App(): JSX.Element {
   return (
     <Provider store={store}>

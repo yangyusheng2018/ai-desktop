@@ -1,18 +1,12 @@
-import {
-  FileSearchOutlined,
-  FolderOutlined,
-  PictureOutlined,
-  QuestionCircleOutlined,
-  TranslationOutlined
-} from '@ant-design/icons'
+import { FileSearchOutlined, FolderOutlined, PictureOutlined, TranslationOutlined } from '@ant-design/icons'
 import { isMac } from '@renderer/config/constant'
-import { AppLogo, isLocalAi, UserAvatar } from '@renderer/config/env'
-import { useTheme } from '@renderer/context/ThemeProvider'
+import { isLocalAi, UserAvatar } from '@renderer/config/env'
+// import { useTheme } from '@renderer/context/ThemeProvider'
 import useAvatar from '@renderer/hooks/useAvatar'
 import { useMinapps } from '@renderer/hooks/useMinapps'
 import { modelGenerating, useRuntime } from '@renderer/hooks/useRuntime'
 import { useSettings } from '@renderer/hooks/useSettings'
-import { isEmoji } from '@renderer/utils'
+import { useShowAssistants } from '@renderer/hooks/useStore'
 import type { MenuProps } from 'antd'
 import { Tooltip } from 'antd'
 import { Avatar } from 'antd'
@@ -34,9 +28,10 @@ const Sidebar: FC = () => {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const { windowStyle, sidebarIcons } = useSettings()
-  const { theme, toggleTheme } = useTheme()
+  // const { theme, toggleTheme } = useTheme()
   const { pinned } = useMinapps()
-
+  const { showAssistants } = useShowAssistants()
+  // className={showAssistants?:'expendside':''}
   const onEditUser = () => UserPopup.show()
 
   const macTransparentWindow = isMac && windowStyle === 'transparent'
@@ -49,42 +44,47 @@ const Sidebar: FC = () => {
     navigate(path)
   }
 
-  const onOpenDocs = () => {
-    MinApp.start({
-      id: 'docs',
-      name: t('docs.title'),
-      url: 'https://docs.cherry-ai.com/',
-      logo: AppLogo
-    })
-  }
+  // const onOpenDocs = () => {
+  //   MinApp.start({
+  //     id: 'docs',
+  //     name: t('docs.title'),
+  //     url: 'https://docs.cherry-ai.com/',
+  //     logo: AppLogo
+  //   })
+  // }
 
   return (
     <Container
       id="app-sidebar"
+      className={!showAssistants ? 'expendside' : ''}
       style={{
         backgroundColor: sidebarBgColor,
         zIndex: minappShow ? 10000 : 'initial'
       }}>
-      {isEmoji(avatar) ? (
+      {/* {isEmoji(avatar) ? (
         <EmojiAvatar onClick={onEditUser}>{avatar}</EmojiAvatar>
-      ) : (
+      ) : ( */}
+      <AvatarSpan className={!showAssistants ? 'exp' : ''}>
         <AvatarImg src={avatar || UserAvatar} draggable={false} className="nodrag" onClick={onEditUser} />
-      )}
+        <span>{!showAssistants ? 'Work Studio' : ''}</span>
+      </AvatarSpan>
+
+      {/* )} */}
       <MainMenusContainer>
-        <Menus onClick={MinApp.onClose}>
+        <Menus className={!showAssistants ? 'expend' : ''} onClick={MinApp.onClose}>
           <MainMenus />
         </Menus>
         {showPinnedApps && (
           <AppsContainer>
             <Divider />
-            <Menus>
+            <Menus className={!showAssistants ? 'expend' : ''}>
               <PinnedApps />
             </Menus>
           </AppsContainer>
         )}
       </MainMenusContainer>
-      <Menus>
-        <Tooltip title={t('docs.title')} mouseEnterDelay={0.8} placement="right">
+      <Menus className={!showAssistants ? 'expend' : ''}>
+        {/* <Tooltip title={t('docs.title')} mouseEnterDelay={0.8} placement="right">
           <Icon
             onClick={onOpenDocs}
             className={minappShow && MinApp.app?.url === 'https://docs.cherry-ai.com/' ? 'active' : ''}>
@@ -99,9 +99,10 @@ const Sidebar: FC = () => {
               <i className="iconfont icon-theme icon-theme-light" />
             )}
           </Icon>
-        </Tooltip>
+        </Tooltip> */}
         <Tooltip title={t('settings.title')} mouseEnterDelay={0.8} placement="right">
           <StyledLink
+            className="set"
             onClick={async () => {
               if (minappShow) {
                 await MinApp.close()
@@ -111,6 +112,7 @@ const Sidebar: FC = () => {
             <Icon className={pathname.startsWith('/settings') && !minappShow ? 'active' : ''}>
               <i className="iconfont icon-setting" />
             </Icon>
+            {!showAssistants ? t('settings.title') : ''}
           </StyledLink>
         </Tooltip>
       </Menus>
@@ -124,7 +126,7 @@ const MainMenus: FC = () => {
   const { sidebarIcons } = useSettings()
   const { minappShow } = useRuntime()
   const navigate = useNavigate()
-
+  const { showAssistants } = useShowAssistants()
   const isRoute = (path: string): string => (pathname === path && !minappShow ? 'active' : '')
   const isRoutes = (path: string): string => (pathname.startsWith(path) && !minappShow ? 'active' : '')
 
@@ -155,13 +157,15 @@ const MainMenus: FC = () => {
       return (
         <Tooltip key={icon} title={t(`${icon}.title`)} mouseEnterDelay={0.8} placement="right">
           <StyledLink
+            className={isActive}
             onClick={async () => {
               if (minappShow) {
                 await MinApp.close()
               }
               navigate(path)
             }}>
-            <Icon className={isActive}>{iconMap[icon]}</Icon>
+            <Icon>{iconMap[icon]}</Icon>
+            {!showAssistants ? t(`${icon}.title`) : ''}
           </StyledLink>
         </Tooltip>
       )
@@ -172,7 +176,7 @@ const PinnedApps: FC = () => {
   const { pinned, updatePinnedMinapps } = useMinapps()
   const { t } = useTranslation()
   const { minappShow } = useRuntime()
-
+  const { showAssistants } = useShowAssistants()
   return (
     <DragableList list={pinned} onUpdate={updatePinnedMinapps} listStyle={{ marginBottom: 5 }}>
       {(app) => {
@@ -192,7 +196,7 @@ const PinnedApps: FC = () => {
             <StyledLink>
               <Dropdown menu={{ items: menuItems }} trigger={['contextMenu']}>
                 <Icon onClick={() => MinApp.start(app)} className={isActive ? 'active' : ''}>
-                  <MinAppIcon size={20} app={app} style={{ borderRadius: 6 }} />
+                  <MinAppIcon size={20} app={app} style={{ borderRadius: 6 }} /> {!showAssistants ? app.name : ''}
                 </Icon>
               </Dropdown>
             </StyledLink>
@@ -220,28 +224,40 @@ const AvatarImg = styled(Avatar)`
   width: 31px;
   height: 31px;
   background-color: var(--color-background-soft);
-  margin-bottom: ${isMac ? '12px' : '12px'};
+  // margin-bottom: ${isMac ? '12px' : '12px'};
   margin-top: ${isMac ? '0px' : '2px'};
   border: none;
   cursor: pointer;
 `
+const AvatarSpan = styled.div`
+  line-height: 31px;
+  margin-bottom: 12px;
 
-const EmojiAvatar = styled.div`
-  width: 31px;
-  height: 31px;
-  background-color: var(--color-background-soft);
-  margin-bottom: ${isMac ? '12px' : '12px'};
-  margin-top: ${isMac ? '0px' : '2px'};
-  border-radius: 20%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  cursor: pointer;
-  -webkit-app-region: none;
-  border: 0.5px solid var(--color-border);
-  font-size: 20px;
+  &.exp {
+    font-size: 12px;
+    .ant-avatar {
+      margin-right: 4px;
+    }
+    img {
+    }
+  }
 `
+// const EmojiAvatar = styled.div`
+//   width: 31px;
+//   height: 31px;
+//   background-color: var(--color-background-soft);
+//   margin-bottom: ${isMac ? '12px' : '12px'};
+//   margin-top: ${isMac ? '0px' : '2px'};
+//   border-radius: 20%;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   font-size: 16px;
+//   cursor: pointer;
+//   -webkit-app-region: none;
+//   border: 0.5px solid var(--color-border);
+//   font-size: 20px;
+// `
 
 const MainMenusContainer = styled.div`
   display: flex;
@@ -251,6 +267,9 @@ const MainMenusContainer = styled.div`
 `
 
 const Menus = styled.div`
+  &.expend {
+    width: 90px;
+  }
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -275,31 +294,42 @@ const Icon = styled.div`
   .anticon {
     font-size: 17px;
   }
-  &:hover {
-    background-color: var(--color-hover);
-    cursor: pointer;
-    .iconfont,
-    .anticon {
-      // color: var(--color-icon-white);
-      color: #fff;
-    }
-  }
-  &.active {
-    background-color: var(--color-active);
-    border: 0.5px solid var(--color-border);
-    .iconfont,
-    .anticon {
-      // color: var(--color-icon-white);
-      color: #fff;
-    }
-  }
+  // &:hover {
+  //   background-color: var(--color-hover);
+  //   cursor: pointer;
+  //   .iconfont,
+  //   .anticon {
+  //     // color: var(--color-icon-white);
+  //     color: #fff;
+  //   }
+  // }
+  // &.active {
+  //   background-color: var(--color-active);
+  //   border: 0.5px solid var(--color-border);
+  //   .iconfont,
+  //   .anticon {
+  //     // color: var(--color-icon-white);
+  //     color: #fff;
+  //   }
+  // }
 `
 
 const StyledLink = styled.div`
   text-decoration: none;
   -webkit-app-region: none;
+  display: flex;
+  line-height: 35px;
+  width: 100%;
+  border-radius: 18px;
+  cursor: pointer;
   &* {
     user-select: none;
+  }
+  &:hover {
+    background-color: var(--color-hover);
+  }
+  &.active {
+    background-color: var(--color-hover);
   }
 `
 

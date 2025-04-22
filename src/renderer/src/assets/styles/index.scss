@@ -55,7 +55,12 @@
   --navbar-background: rgba(30, 30, 30);
 
   --navbar-height: 40px;
+
   --sidebar-width: 50px;
+  .expendside {
+    --sidebar-width: 120px;
+  }
+  --sidebar-exp-width: 100px;
   --status-bar-height: 40px;
   --input-bar-height: 100px;
 

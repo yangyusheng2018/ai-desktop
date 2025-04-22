@@ -43,7 +43,7 @@ const Chat: FC<Props> = (props) => {
             添加工具
           </TopBtn>
           <TopBtn
-            style={{ color: props.assistant.id !== 'default' ? 'red' : '#000' }}
+            className={props.assistant.id !== 'default' ? 'disabled' : ''}
             onClick={() => {
               props.assistant.id === 'default' && AssistantSettingsPopup.show({ assistant })
             }}>
@@ -108,6 +108,9 @@ const TopBtn = styled.div`
   line-height: 32px;
   margin-left: 12px;
   cursor: pointer;
+  &.disabled {
+    color: #a7a2a2;
+  }
 `
 
 const Main = styled(Flex)`

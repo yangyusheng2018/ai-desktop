@@ -1,9 +1,11 @@
-import { FormOutlined, SearchOutlined } from '@ant-design/icons'
+import { FormOutlined, ProfileOutlined, SearchOutlined } from '@ant-design/icons'
 import { Navbar, NavbarLeft, NavbarRight } from '@renderer/components/app/Navbar'
 import { HStack } from '@renderer/components/Layout'
+import MinApp from '@renderer/components/MinApp'
 import MinAppsPopover from '@renderer/components/Popups/MinAppsPopover'
 import SearchPopup from '@renderer/components/Popups/SearchPopup'
 import { isMac, isWindows } from '@renderer/config/constant'
+import { AppLogo } from '@renderer/config/env'
 import { useAssistant } from '@renderer/hooks/useAssistant'
 import { modelGenerating } from '@renderer/hooks/useRuntime'
 import { useSettings } from '@renderer/hooks/useSettings'
@@ -21,7 +23,6 @@ import styled from 'styled-components'
 
 import SelectModelButton from './components/SelectModelButton'
 import UpdateAppButton from './components/UpdateAppButton'
-
 interface Props {
   activeAssistant: Assistant
   activeTopic: Topic
@@ -56,6 +57,14 @@ const HeaderNavbar: FC<Props> = ({ activeAssistant }) => {
     dispatch(setNarrowMode(!narrowMode))
   }
 
+  const onOpenDocs = () => {
+    MinApp.start({
+      id: 'docs',
+      name: t('docs.title'),
+      url: 'https://docs.cherry-ai.com/',
+      logo: AppLogo
+    })
+  }
   return (
     <Navbar className="home-navbar">
       {showAssistants && (
@@ -103,10 +112,16 @@ const HeaderNavbar: FC<Props> = ({ activeAssistant }) => {
         <HStack alignItems="center" gap={8}>
           <UpdateAppButton />
           <Tooltip title={t('chat.assistant.search.placeholder')} mouseEnterDelay={0.8}>
+            <NarrowIcon onClick={onOpenDocs}>
+              <ProfileOutlined /> <span style={{ marginLeft: '8px' }}>帮助文档</span>
+            </NarrowIcon>
+          </Tooltip>
+          <Tooltip title={t('chat.assistant.search.placeholder')} mouseEnterDelay={0.8}>
             <NarrowIcon onClick={() => SearchPopup.show()}>
               <SearchOutlined />
             </NarrowIcon>
           </Tooltip>
+
           <Tooltip title={t('navbar.expand')} mouseEnterDelay={0.8}>
             <NarrowIcon onClick={handleNarrowModeToggle}>
               <i className="iconfont icon-icon-adaptive-width"></i>

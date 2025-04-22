@@ -3,6 +3,7 @@ import DragableList from '@renderer/components/DragableList'
 import Scrollbar from '@renderer/components/Scrollbar'
 import { useAgents } from '@renderer/hooks/useAgents'
 import { useAssistants } from '@renderer/hooks/useAssistant'
+import SettingModalsPopup from '@renderer/pages/home/SettingModal/index'
 import { Assistant } from '@renderer/types'
 import { FC, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -50,7 +51,10 @@ const Assistants: FC<AssistantsTabProps> = ({
             key={assistant.id}
             assistant={assistant}
             isActive={assistant.id === activeAssistant.id}
-            onSwitch={setActiveAssistant}
+            onSwitch={(onAssistant: Assistant) => {
+              setActiveAssistant(onAssistant)
+              SettingModalsPopup.close()
+            }}
             onDelete={onDelete}
             addAgent={addAgent}
             addAssistant={addAssistant}
