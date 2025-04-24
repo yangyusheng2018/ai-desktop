@@ -1,3 +1,4 @@
+import { PlusOutlined } from '@ant-design/icons'
 import { useAssistant } from '@renderer/hooks/useAssistant'
 import { useSettings } from '@renderer/hooks/useSettings'
 import { useShowTopics } from '@renderer/hooks/useStore'
@@ -38,7 +39,7 @@ const Chat: FC<Props> = (props) => {
               })
             }>
             <Icon>
-              <i className="iconfont icon-setting" />
+              <PlusOutlined />
             </Icon>
             添加工具
           </TopBtn>
@@ -105,7 +106,7 @@ const TopButtons = styled.div`
 `
 const TopBtn = styled.div`
   display: flex;
-  line-height: 32px;
+  line-height: 35px;
   margin-left: 12px;
   cursor: pointer;
   &.disabled {
