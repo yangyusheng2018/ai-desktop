@@ -19,7 +19,7 @@ import styled from 'styled-components'
 import DragableList from '../DragableList'
 import MinAppIcon from '../Icons/MinAppIcon'
 import MinApp from '../MinApp'
-import UserPopup from '../Popups/UserPopup'
+// import UserPopup from '../Popups/UserPopup'
 
 const Sidebar: FC = () => {
   const { pathname } = useLocation()
@@ -32,7 +32,7 @@ const Sidebar: FC = () => {
   const { pinned } = useMinapps()
   const { showAssistants } = useShowAssistants()
   // className={showAssistants?:'expendside':''}
-  const onEditUser = () => UserPopup.show()
+  // const onEditUser = () => UserPopup.show()
 
   const macTransparentWindow = isMac && windowStyle === 'transparent'
   const sidebarBgColor = macTransparentWindow ? 'transparent' : 'var(--navbar-background)'
@@ -65,7 +65,7 @@ const Sidebar: FC = () => {
         <EmojiAvatar onClick={onEditUser}>{avatar}</EmojiAvatar>
       ) : ( */}
       <AvatarSpan className={!showAssistants ? 'exp' : ''}>
-        <AvatarImg src={avatar || UserAvatar} draggable={false} className="nodrag" onClick={onEditUser} />
+        <AvatarImg src={avatar || UserAvatar} draggable={false} className="nodrag" />
         <span>{!showAssistants ? 'Work Studio' : ''}</span>
       </AvatarSpan>
 
