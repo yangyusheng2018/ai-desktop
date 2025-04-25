@@ -117,7 +117,6 @@ const PopupContainer: React.FC<PopupContainerProps> = ({ model, resolve }) => {
           setOpen(false)
         }
       }))
-      console.log(filteredModels, 'filteredModels')
       // Only return the group if it has filtered models
       return filteredModels.length > 0
         ? {
