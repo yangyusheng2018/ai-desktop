@@ -426,7 +426,7 @@ export const PROVIDER_CONFIG = {
       url: 'https://auto-openai.cpolar.cn'
     },
     websites: {
-      official: 'https://lmstudio.ai/',
+      official: 'https://auto-openai.cpolar.cn',
       docs: 'https://lmstudio.ai/docs',
       models: 'https://lmstudio.ai/models'
     }

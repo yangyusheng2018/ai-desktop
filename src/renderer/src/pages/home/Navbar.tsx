@@ -61,7 +61,7 @@ const HeaderNavbar: FC<Props> = ({ activeAssistant }) => {
     MinApp.start({
       id: 'docs',
       name: t('docs.title'),
-      url: 'https://docs.cherry-ai.com/',
+      url: 'https://m1r239or5aw.feishu.cn/wiki/R2KVwVuSDieF0PkSFyNcB2LFned?from=from_copylink',
       logo: AppLogo
     })
   }
