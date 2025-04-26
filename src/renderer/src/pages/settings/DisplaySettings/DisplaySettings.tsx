@@ -1,21 +1,20 @@
 import { SyncOutlined } from '@ant-design/icons'
 import { isMac } from '@renderer/config/constant'
-import { DEFAULT_MIN_APPS } from '@renderer/config/minapps'
+// import { DEFAULT_MIN_APPS } from '@renderer/config/minapps'
 import { useTheme } from '@renderer/context/ThemeProvider'
-import { useMinapps } from '@renderer/hooks/useMinapps'
+// import { useMinapps } from '@renderer/hooks/useMinapps'
 import { useSettings } from '@renderer/hooks/useSettings'
 import { useAppDispatch } from '@renderer/store'
 import {
-  DEFAULT_SIDEBAR_ICONS,
+  // DEFAULT_SIDEBAR_ICONS,
   setClickAssistantToShowTopic,
-  setShowTopicTime,
-  setSidebarIcons
+  setShowTopicTime
+  // setSidebarIcons
 } from '@renderer/store/settings'
 import { ThemeMode } from '@renderer/types'
 import { Segmented, Switch } from 'antd'
-import { FC, useCallback, useMemo, useState } from 'react'
+import { FC, useCallback, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import styled from 'styled-components'
 
 import { SettingContainer, SettingDivider, SettingGroup, SettingRow, SettingRowTitle, SettingTitle } from '..'
 
@@ -29,20 +28,20 @@ const DisplaySettings: FC = () => {
     setTopicPosition,
     clickAssistantToShowTopic,
     showTopicTime,
-    customCss,
-    sidebarIcons,
+    // customCss,
+    // sidebarIcons,
     showAssistantIcon,
     setShowAssistantIcon
   } = useSettings()
-  const { minapps, disabled, updateMinapps, updateDisabledMinapps } = useMinapps()
+  // const { minapps, disabled, updateMinapps, updateDisabledMinapps } = useMinapps()
   const { theme: themeMode } = useTheme()
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
 
-  const [visibleIcons, setVisibleIcons] = useState(sidebarIcons?.visible || DEFAULT_SIDEBAR_ICONS)
-  const [disabledIcons, setDisabledIcons] = useState(sidebarIcons?.disabled || [])
-  const [visibleMiniApps, setVisibleMiniApps] = useState(minapps)
-  const [disabledMiniApps, setDisabledMiniApps] = useState(disabled || [])
+  // const [visibleIcons, setVisibleIcons] = useState(sidebarIcons?.visible || DEFAULT_SIDEBAR_ICONS)
+  // const [disabledIcons, setDisabledIcons] = useState(sidebarIcons?.disabled || [])
+  // const [visibleMiniApps, setVisibleMiniApps] = useState(minapps)
+  // const [disabledMiniApps, setDisabledMiniApps] = useState(disabled || [])
 
   // 使用useCallback优化回调函数
   const handleWindowStyleChange = useCallback(
@@ -52,18 +51,18 @@ const DisplaySettings: FC = () => {
     [setWindowStyle]
   )
 
-  const handleReset = useCallback(() => {
-    setVisibleIcons([...DEFAULT_SIDEBAR_ICONS])
-    setDisabledIcons([])
-    dispatch(setSidebarIcons({ visible: DEFAULT_SIDEBAR_ICONS, disabled: [] }))
-  }, [dispatch])
+  // const handleReset = useCallback(() => {
+  //   setVisibleIcons([...DEFAULT_SIDEBAR_ICONS])
+  //   setDisabledIcons([])
+  //   dispatch(setSidebarIcons({ visible: DEFAULT_SIDEBAR_ICONS, disabled: [] }))
+  // }, [dispatch])
 
-  const handleResetMinApps = useCallback(() => {
-    setVisibleMiniApps(DEFAULT_MIN_APPS)
-    setDisabledMiniApps([])
-    updateMinapps(DEFAULT_MIN_APPS)
-    updateDisabledMinapps([])
-  }, [updateDisabledMinapps, updateMinapps])
+  // const handleResetMinApps = useCallback(() => {
+  //   setVisibleMiniApps(DEFAULT_MIN_APPS)
+  //   setDisabledMiniApps([])
+  //   updateMinapps(DEFAULT_MIN_APPS)
+  //   updateDisabledMinapps([])
+  // }, [updateDisabledMinapps, updateMinapps])
 
   const themeOptions = useMemo(
     () => [
@@ -212,16 +211,16 @@ const DisplaySettings: FC = () => {
   )
 }
 
-const TitleExtra = styled.div`
-  font-size: 12px;
-  cursor: pointer;
-  text-decoration: underline;
-  opacity: 0.7;
-`
-const ResetButtonWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
+// const TitleExtra = styled.div`
+//   font-size: 12px;
+//   cursor: pointer;
+//   text-decoration: underline;
+//   opacity: 0.7;
+// `
+// const ResetButtonWrapper = styled.div`
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// `
 
 export default DisplaySettings
