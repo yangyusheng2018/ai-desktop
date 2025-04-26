@@ -8,19 +8,16 @@ import { useAppDispatch } from '@renderer/store'
 import {
   DEFAULT_SIDEBAR_ICONS,
   setClickAssistantToShowTopic,
-  setCustomCss,
   setShowTopicTime,
   setSidebarIcons
 } from '@renderer/store/settings'
 import { ThemeMode } from '@renderer/types'
-import { Button, Input, Segmented, Switch } from 'antd'
+import { Segmented, Switch } from 'antd'
 import { FC, useCallback, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 
 import { SettingContainer, SettingDivider, SettingGroup, SettingRow, SettingRowTitle, SettingTitle } from '..'
-import MiniAppIconsManager from './MiniAppIconsManager'
-import SidebarIconsManager from './SidebarIconsManager'
 
 const DisplaySettings: FC = () => {
   const {
@@ -161,7 +158,7 @@ const DisplaySettings: FC = () => {
           <Switch checked={showTopicTime} onChange={(checked) => dispatch(setShowTopicTime(checked))} />
         </SettingRow>
       </SettingGroup>
-      <SettingGroup theme={theme}>
+      {/* <SettingGroup theme={theme}>
         <SettingTitle
           style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
           <span>{t('settings.display.sidebar.title')}</span>
@@ -176,8 +173,8 @@ const DisplaySettings: FC = () => {
           setVisibleIcons={setVisibleIcons}
           setDisabledIcons={setDisabledIcons}
         />
-      </SettingGroup>
-      <SettingGroup theme={theme}>
+      </SettingGroup> */}
+      {/* <SettingGroup theme={theme}>
         <SettingTitle
           style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
           <span>{t('settings.display.minApp.title')}</span>
@@ -192,8 +189,8 @@ const DisplaySettings: FC = () => {
           setVisibleMiniApps={setVisibleMiniApps}
           setDisabledMiniApps={setDisabledMiniApps}
         />
-      </SettingGroup>
-      <SettingGroup theme={theme}>
+      </SettingGroup> */}
+      {/* <SettingGroup theme={theme}>
         <SettingTitle>
           {t('settings.display.custom.css')}
           <TitleExtra onClick={() => window.api.openWebsite('https://cherrycss.com/')}>
@@ -210,7 +207,7 @@ const DisplaySettings: FC = () => {
             fontFamily: 'monospace'
           }}
         />
-      </SettingGroup>
+      </SettingGroup> */}
     </SettingContainer>
   )
 }

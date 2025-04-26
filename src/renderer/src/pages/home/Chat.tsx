@@ -41,7 +41,7 @@ const Chat: FC<Props> = (props) => {
             <Icon>
               <PlusOutlined />
             </Icon>
-            添加工具
+            切换智能体
           </TopBtn>
           <TopBtn
             onClick={() => {
