@@ -44,9 +44,8 @@ const Chat: FC<Props> = (props) => {
             添加工具
           </TopBtn>
           <TopBtn
-            className={props.assistant.id !== 'default' ? 'disabled' : ''}
             onClick={() => {
-              props.assistant.id === 'default' && AssistantSettingsPopup.show({ assistant })
+              AssistantSettingsPopup.show({ assistant })
             }}>
             <Icon>
               <i className="iconfont icon-setting" />
