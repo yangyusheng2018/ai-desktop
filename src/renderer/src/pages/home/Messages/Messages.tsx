@@ -28,18 +28,24 @@ import Suggestions from '../components/Suggestions'
 import MessageGroup from './MessageGroup'
 import NarrowLayout from './NarrowLayout'
 import Prompt from './Prompt'
+import LogoLightPng from '@renderer/assets/images/logo.png'
+import LogoBlackPng from '@renderer/assets/images/logo-witer.png'
 
 interface Props {
   assistant: Assistant
   topic: Topic
   setActiveTopic: (topic: Topic) => void
 }
+import { useTheme } from '@renderer/context/ThemeProvider'
+  
 
 const Messages: FC<Props> = ({ assistant, topic, setActiveTopic }) => {
   const [messages, setMessages] = useState<Message[]>([])
   const [displayMessages, setDisplayMessages] = useState<Message[]>([])
   const [hasMore, setHasMore] = useState(true)
   const [isLoadingMore, setIsLoadingMore] = useState(false)
+
+  const { theme } = useTheme()
 
   const containerRef = useRef<HTMLDivElement>(null)
   const messagesRef = useRef(messages)
@@ -317,7 +323,8 @@ const Messages: FC<Props> = ({ assistant, topic, setActiveTopic }) => {
             <LoaderContainer $loading={isLoadingMore}>
               <BeatLoader size={8} color="var(--color-text-2)" />
             </LoaderContainer>
-            {Object.entries(groupedMessages).map(([key, messages]) => (
+            {
+            Object.entries(groupedMessages).length===0?(<EmptyMsg><div><img src={theme==='light'?LogoLightPng:LogoBlackPng}></img></div><div>WorkStudio是一款集成多功能的智能办公助手，通过AI技术为用户提供全方位的办公支持，提升工作效率和创造力</div></EmptyMsg>):Object.entries(groupedMessages).map(([key, messages]) => (
               <MessageGroup
                 key={key}
                 messages={messages}
@@ -340,7 +347,17 @@ const Messages: FC<Props> = ({ assistant, topic, setActiveTopic }) => {
 interface LoaderProps {
   $loading: boolean
 }
-
+const EmptyMsg = styled.div`
+  position: fixed;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -60%);
+    width: 400px;
+    img{
+      width:150px;
+    }
+`
 const LoaderContainer = styled.div<LoaderProps>`
   display: flex;
   justify-content: center;

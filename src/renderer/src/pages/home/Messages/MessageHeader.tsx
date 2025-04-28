@@ -77,7 +77,7 @@ const MessageHeader: FC<Props> = memo(({ assistant, model, message }) => {
               border: isLocalAi ? '1px solid var(--color-border-soft)' : 'none',
               filter: theme === 'dark' ? 'invert(0.05)' : undefined
             }}
-            onClick={showMiniApp}>
+            >
             {avatarName}
           </Avatar>
         ) : (

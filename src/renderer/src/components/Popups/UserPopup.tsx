@@ -201,6 +201,7 @@ export default class UserPopup {
     TopView.hide('UserPopup')
   }
   static show() {
+    return null;
     return new Promise<any>((resolve) => {
       TopView.show(
         <PopupContainer
