@@ -1,6 +1,6 @@
 import UserPopup from '@renderer/components/Popups/UserPopup'
 import { APP_NAME, AppLogo, isLocalAi } from '@renderer/config/env'
-import { startMinAppById } from '@renderer/config/minapps'
+// import { startMinAppById } from '@renderer/config/minapps'
 import { getModelLogo } from '@renderer/config/models'
 import { useTheme } from '@renderer/context/ThemeProvider'
 import useAvatar from '@renderer/hooks/useAvatar'
@@ -53,9 +53,9 @@ const MessageHeader: FC<Props> = memo(({ assistant, model, message }) => {
   const avatarName = useMemo(() => firstLetter(assistant?.name).toUpperCase(), [assistant?.name])
   const username = useMemo(() => removeLeadingEmoji(getUserName()), [getUserName])
 
-  const showMiniApp = useCallback(() => {
-    showMinappIcon && model?.provider && startMinAppById(model.provider)
-  }, [model?.provider, showMinappIcon])
+  // const showMiniApp = useCallback(() => {
+  //   showMinappIcon && model?.provider && startMinAppById(model.provider)
+  // }, [model?.provider, showMinappIcon])
 
   const avatarStyle: CSSProperties | undefined = isBubbleStyle
     ? {
