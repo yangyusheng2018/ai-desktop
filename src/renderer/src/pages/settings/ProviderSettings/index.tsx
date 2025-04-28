@@ -65,6 +65,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
+  padding-left: 20px;
+  padding-right: 20px;
 `
 
 const ContentContainer = styled.div`

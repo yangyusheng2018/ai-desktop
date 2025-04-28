@@ -129,7 +129,7 @@ const PopupContainer: React.FC<Props> = ({ provider: _provider, resolve }) => {
         <ModelHeaderTitle>
           {provider.isSystem ? t(`provider.${provider.id}`) : provider.name}
           {i18n.language.startsWith('zh') ? '' : ' '}
-          {t('common.models')}
+          {/* {t('common.models')} */}
         </ModelHeaderTitle>
         {loading && <LoadingOutlined size={20} />}
       </Flex>
