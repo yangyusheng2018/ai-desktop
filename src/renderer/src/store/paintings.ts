@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { TEXT_TO_IMAGES_MODELS } from '@renderer/config/models'
+// import { TEXT_TO_IMAGES_MODELS } from '@renderer/config/models'
 import { Painting } from '@renderer/types'
 import { uuid } from '@renderer/utils'
 
@@ -18,7 +18,6 @@ export const DEFAULT_PAINTING: Painting = {
   seed: '',
   steps: 25,
   guidanceScale: 4.5,
-  model: TEXT_TO_IMAGES_MODELS[0].id
 }
 
 const initialState: PaintingsState = {

@@ -10,7 +10,7 @@ import { HStack, VStack } from '@renderer/components/Layout'
 import Scrollbar from '@renderer/components/Scrollbar'
 import TranslateButton from '@renderer/components/TranslateButton'
 import { isMac } from '@renderer/config/constant'
-import { TEXT_TO_IMAGES_MODELS } from '@renderer/config/models'
+// import { TEXT_TO_IMAGES_MODELS } from '@renderer/config/models'
 import { useTheme } from '@renderer/context/ThemeProvider'
 import { usePaintings } from '@renderer/hooks/usePaintings'
 import { useRuntime } from '@renderer/hooks/useRuntime'
@@ -34,7 +34,7 @@ import SendMessageButton from '../home/Inputbar/SendMessageButton'
 import { SettingTitle } from '../settings'
 import Artboard from './Artboard'
 import PaintingsList from './PaintingsList'
-
+import { useProviders } from '@renderer/hooks/useProvider'
 const IMAGE_SIZES = [
   {
     label: '1:1',
@@ -83,9 +83,12 @@ const PaintingsPage: FC = () => {
   const dispatch = useAppDispatch()
   const { generating } = useRuntime()
 
-  const modelOptions = TEXT_TO_IMAGES_MODELS.map((model) => ({
+  const { providers } = useProviders()
+  const allModels = providers.map((p) => p.models).flat()
+  const modelOptions = allModels.filter(v=>v.type?.includes('vision')).map((model) => ({
     label: model.name,
-    value: model.id
+    value: model.id,
+    ...model
   }))
 
   const textareaRef = useRef<any>(null)
@@ -98,7 +101,7 @@ const PaintingsPage: FC = () => {
   }
 
   const onSelectModel = (modelId: string) => {
-    const model = TEXT_TO_IMAGES_MODELS.find((m) => m.id === modelId)
+    const model = modelOptions.find((m) => m.value === modelId)
     if (model) {
       updatePaintingState({ model: modelId })
     }
@@ -122,7 +125,7 @@ const PaintingsPage: FC = () => {
 
     updatePaintingState({ prompt })
 
-    const model = TEXT_TO_IMAGES_MODELS.find((m) => m.id === painting.model)
+    const model = modelOptions.find((m) => m.value === painting.model)
     const provider = getProviderByModel(model)
 
     if (!provider.enabled) {

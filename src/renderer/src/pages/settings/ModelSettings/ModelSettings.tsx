@@ -30,7 +30,6 @@ const ModelSettings: FC = () => {
   const { translateModelPrompt } = useSettings()
 
   const dispatch = useAppDispatch()
-
   const selectOptions = providers
     .filter((p) => p.models.length > 0)
     .map((p) => ({
