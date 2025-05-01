@@ -224,7 +224,7 @@ const ProviderSetting: FC<Props> = ({ provider: _provider }) => {
         <Flex align="center" gap={8}>
           <ProviderName>
             {/* {provider.isSystem ? t(`provider.${provider.id}`) : provider.name} */}
-            普华大模型
+            PH8-LLM
           </ProviderName>
           {officialWebsite! && (
             <Link target="_blank" href={providerConfig.websites.official}>
