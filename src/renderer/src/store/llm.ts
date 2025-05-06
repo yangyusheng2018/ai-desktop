@@ -28,7 +28,7 @@ const initialState: LlmState = {
   providers: [
     {
       id: 'lmstudio',
-      name: '普华大模型',
+      name: 'PH8-LLM',
       type: 'openai',
       apiKey: '',
       apiHost: 'https://auto-openai.cpolar.cn',

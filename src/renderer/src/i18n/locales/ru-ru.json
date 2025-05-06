@@ -344,7 +344,7 @@
       "keep_alive_time.description": "Время в минутах, в течение которого модель остается активной, по умолчанию 5 минут.",
       "keep_alive_time.placeholder": "Минуты",
       "keep_alive_time.title": "Время жизни модели",
-      "title": "普华大模型"
+      "title": "PH8-LLM"
     },
     "mermaid": {
       "download": {
@@ -553,7 +553,7 @@
       "hyperbolic": "Hyperbolic",
       "infini": "Infini",
       "jina": "Jina",
-      "lmstudio": "普华大模型",
+      "lmstudio": "PH8-LLM",
       "minimax": "MiniMax",
       "mistral": "Mistral",
       "modelscope": "ModelScope",

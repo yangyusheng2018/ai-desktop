@@ -50,7 +50,7 @@ const Chat: FC<Props> = (props) => {
             <Icon>
               <i className="iconfont icon-setting" />
             </Icon>
-            Prompt设置
+            助手设置
           </TopBtn>
           <TopBtn
             onClick={() =>
@@ -66,7 +66,7 @@ const Chat: FC<Props> = (props) => {
             <Icon>
               <i className="iconfont icon-setting" />
             </Icon>
-            设置模型
+            参数调整
           </TopBtn>
         </TopButtons>
 

@@ -344,7 +344,7 @@
       "keep_alive_time.description": "对话后模型在内存中保持的时间（默认：5分钟）",
       "keep_alive_time.placeholder": "分钟",
       "keep_alive_time.title": "保持活跃时间",
-      "title": "普华大模型"
+      "title": "PH8-LLM"
     },
     "mermaid": {
       "download": {
@@ -553,7 +553,7 @@
       "hyperbolic": "Hyperbolic",
       "infini": "无问芯穹",
       "jina": "Jina",
-      "lmstudio": "普华大模型",
+      "lmstudio": "PH8-LLM",
       "minimax": "MiniMax",
       "mistral": "Mistral",
       "modelscope": "ModelScope 魔搭",
